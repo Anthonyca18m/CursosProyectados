@@ -1,0 +1,28 @@
+﻿git init - inicializamos el proyecto
+git status - estado del proyecto
+git config - configuración de git | --system --global --local |
+	git config --global user.name 'nombre'
+	git config --global user.email correo
+	git config --global core.editor vim
+	git config --list | chekamos la configuración hecha
+git add . | agregar al staging area
+git commit -m 'comentario' | agregar al repository
+git checkout nombreArchivo | vuelve a como estabas en el último commit
+git log | el log de los commits
+	git log -p | que ha pasado en cada commit
+	git log -X(un número) | veo los X últimos commits
+	git log --stat | muestra las estadisticas de los commits
+	git log --pretty=format:"%h - %an : %s" | customize a como quiero verlo
+	git log --oneline | en 1 sola línea, sin mucho detalle
+git checkout hash | me muevo a ese punto
+git clone | para descargar repositorios
+git fetch | jala el historial ?
+git pull source rama | jala y me da el código para estar up to date en esa rama de ese proyect
+git checkout -b nombreRama | crea rama
+git checkout nombreRama - moverse a esa rama
+git branch | muestra las ramas del proyecto
+git merge nombreRama | mezclamos ramas. Estar en la rama donde quieres que se conbine la otra.
+git branch -D nombreRama | elimina la rama
+git remote add origin rutaDeProyecto | añadir remoto
+git pull origin master | jalo lo del master remoto
+git push origin master | le mando al master remoto lo que he hecho.
