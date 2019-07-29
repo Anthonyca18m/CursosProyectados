@@ -1,6 +1,6 @@
 /*
  * Curso Java. Manipulación de cadenas. Clase String I. Vídeo 11
- * 
+ * Curso Java. Manipulación de cadenas. Clase String II. Vídeo 12
  * 
  * 
  * Notas de la Clase: 
@@ -35,12 +35,16 @@ public class Manipulacion_de_Cadenas {
 		
 		System.out.println("Última letra del nombre : " + nombre.charAt(nombre.length()-1));
 		
-		System.out.println(nombre.substring(4));
+		System.out.println("devuelve/extrae de la posición que quieras hasta donde quieras " + nombre.substring(4,6));
+		
+		System.out.println("devuelve/extrae de la posición 4 para arriba las letras " + nombre.substring(4));
 		
 		System.out.println("Evaluando si son iguales Considerando Mayusculas Minusculas " + nombre.equals("anthony"));
 		
 		
 		System.out.println("Evaluando si son iguales ignorando Mayusculas Minusculas " + nombre.equalsIgnoreCase("anthony"));
+	
+	
 	}
 
 }
