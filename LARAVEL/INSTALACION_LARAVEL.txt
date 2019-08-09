@@ -1,0 +1,96 @@
+CREDITOS: PILDORAS INFORMATICAS...
+
+INSTALAR:
+
+VIRTUALBOX (IGUAL QUE ABAJO pero si no esta agregado solo agregas la direccion donde esta la carpeta y ya ejemplo: c/archivosprogramas/virutalbox/)
+
+COMPOSER (COMPRUEBAS EN LAS VARIABLES LOCALES SI APARECE EL COMPUSER) --En configuraciones avanzadas equipo variables de entorno y ahi compruebas
+
+VAGRANT  (instalas reinicias pc, y una vez reiniciada prendes pc, vas al git )
+
+ingresas:
+
+vboxmanage --version  (debe salir 5....)
+
+vagrant --version 	(debe salir 2....)
+
+vagrant box add laravel/homestead (instalara... o eliges la maquina virtual que estes usando 2) virtualbox XD)
+
+git clone https://github.com/laravel/homestead.git Homestead (descargas entorno homestead de github en la carpeta "Homestead" esta ubicado en /users/)
+
+cd Homestead (te vas a la carpeta creada)
+
+bash init.sh (inicializas homestead)
+
+editas el archivo Homestead.yaml (ubicado en la carpeta Homestead)
+
+ssh-keygen -t rsa -b 4096 -C "anthonyca18@gmail.com" 	(pones un alias a tu entorno de trabajo)
+
+de ahi te pedira clave si quieres la pones sino no 
+
+se creara una carpeta en usuarios llamada .shh conteniendo las claves tanto privadas como publicas
+
+creas las carpeta code (en tu Homestead.yaml esta configurado asi el nombre siquieres la 
+cambias sino no,recuerda que la carpeta que creas debe ser igual el nombre)
+
+vagrant up (introduces esto en el git verificando que estes en la carpeta Homestead)
+
+vagrant ssh 	(aparece el detalle de la maquina virtual)
+
+exit (para salir de ahi)
+
+vagrant suspend (suspendes con el estado actual de cualquier trabajo que estes haciendo)
+
+
+---------------SIGUE INSTALACION LARAVEL ----------
+
+AQUI VAMOS UTILIZAR EL COMPOSER Y LA CARPETA CODE O COMO LO HAYAS PUESTO
+
+VAS A DOCUMENTACION DE LARAVEL EN CHROME
+
+UTILIZAREMOS LA INSTALACION VIA COMPOSER CREATE PROJECT
+
+editas en el archivo Homestead.yaml
+
+sites: 
+	-map: homestead.test
+	to: /home/vagrant/code/Laravel/public 	la carpeta antes del public llamado Laravel fue creado instalar ahi el laravel
+
+
+vas a git
+
+ingresas a la carpeta Homestead y levantas el vagrant
+
+vagrant up
+
+vagrant ssh
+		cd code  //entras a la carpeta code o como lo hayas llamado
+
+composer create-project laravel/laravel Laravel (instalas laravel en la carpeta que creamos llamada Laravel o como lo hayas llamado)
+
+instalando...
+
+de ahi vas a esta direccion
+
+C:\Windows\System32\drivers\etc  // entras al archivo hosts con permisos de administrador
+
+introduces la ip que te aparece en el homestead.yaml (a mi por defecto me aparecio esto)
+
+192.168.10.10  homestead.test
+
+guardas con cambios de administrador y reinicias la pc
+
+entras al git , a la carpeta /Homestead desde git
+
+introduces vagrant up 	//levantandolo
+
+introduces vagrant reload --provision
+
+esperas...
+
+y por ultimo entras a tu crhome y colocas la direccion 
+
+homestead.test	y eso seria toda la instalacion
+
+SOS UN CRACK!.
+	

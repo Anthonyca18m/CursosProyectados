@@ -1,0 +1,11 @@
+ANTES DE COMENZAR TODO DEBES ABRIR GIT
+
+DEBES DIRIGIRTE A LA CARPETA homestead y levantar vagrant
+
+desde git:
+
+cd Homestead (dirigiendo a la carpeta o como lo hayas llamado tu)
+
+vagrant up (levantamos vagrant)
+
+y prosigue crack
