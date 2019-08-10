@@ -1,0 +1,16 @@
+PHP ES UN PROGRAMA QUE SE EJECUTA EN UN SERVIDOR !
+
+	LADO DEL CLIENTE VS LADO DEL SERVIDOR
+EJECUCIÓN EN CLIENTE 				EJECUCIÓN EN SERVIDOR
+
+*PIDE Y RECIBE con html				* petición, servidor recibe conecta a ddbb y devuelve con html
+JS, VBscript, Applets Java, HTML, CSS 			PHP, JSP, Perl, ASP
+
+SOFTWARE NECESARIO PARA EL CURSO :::: 	 
+
+*	Servidor Web : Apache
+*	Extensiones PHP
+*	Gestor BBDD: Mysql
+
+programas que te pueden ayudar XAMPP / WAMP / EASYPHP
+
