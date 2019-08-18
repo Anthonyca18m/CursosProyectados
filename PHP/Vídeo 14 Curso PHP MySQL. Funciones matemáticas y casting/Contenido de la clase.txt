@@ -1,0 +1,16 @@
+Continuamos aprendiendo la sintaxis de PHP, en esta ocasión viendo cómo utilizar funciones predefinidas para realizar cálculos matemáticos.
+
+Casting es convertir variables a otro tipo
+
+en PHP hay dos tipos de casting IMPLICITO E EXPLICITO
+
+  
+si tu declaras 
+
+	$num1 = "4";  // ESTO PHP LO ESTA TOMANDO COMO UNA VARIABLE DE TIPO STRING
+	
+	$num1+4; // AQUI ES EL MISMO PERO LO ESTA CAMBIANDO A INTEGER O ASI LO ESTA TOMANDO PHP
+	
+	//si lo quieres hacer un casting emplicito pues lo que tienes que hacer es
+	
+	$resultado = (int) $num1; //esto si deseas obtener una variable de tipo entero no y asi sucesivamente...
