@@ -1,0 +1,2 @@
+CREA TU BASE DE DATOS "cursophpone"
+IMPLEMENTA UNA TABLA user con sus columnas id, Nombre, Apellido, Direccion
