@@ -7,12 +7,13 @@
 <?php 
 
 	include("POO_III.php");
-
-	
+	$lamborgini = new Coche();
 
 	$pegaso = new Camion();
+
+	echo $pegaso->establecerColoryNombre("rojo","Prime");
 	
-	$pegaso->establecerColoryNombre("Herando color rojo"," Optimus Prime");
+	
 
 ?>
 </body>
