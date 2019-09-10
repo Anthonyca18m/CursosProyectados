@@ -1,0 +1,61 @@
+VEREMOS:
+
+
+
+		* CONSULTAS PREPARADAS
+
+			*UTILIDAD Y VENTAJAS
+
+			FUNCIONES MYSQLI NECESARIAS
+
+					*VENTAJAS					
+
+					*EVITAN INYECCION SQL
+
+					*En consultas de tipo INSERT son más rápidas e eficientes	
+
+
+					*INCONVENIENTES
+
+					*Hay que escribir más código
+
+					* Hay que conocer nuevas funciones de MYSQLI
+
+
+		CONSULTA PREPARADAS PASOS A SEGUIR:
+
+
+		1:
+			Creamos la sentencia SQL sustituyendo los valores de criterio por el simbolo ?
+				
+				*SQL = " SELECT * FROM PRODUCTOS WHERE PAIS = ? ";
+
+		2:
+			Preparamos la consulta con la función mysqli_prepare().Esta función requiere dos parámetros: el objeto conexión y la sentencia sql.
+
+				*$resultado = mysqli_prepare($Conexion, $SQL); La función devuelve objeto de tipo mysqli_stmt
+
+		3:
+			Unimos los parámetros a la sentencia sql. De esto se encarga la funcipon mysqli_stmt_param(). Devuelve true o false.
+
+			Esta función requiere tres parámetros: el objeto mysqli_stmt(devuelto por el mysqli_prepare), el tipo de dato que se utilizará como criterio en sql, variable con criterio.
+
+					mysqli_stmt_bind_param(el objeto mysqli_stmt, tipo_de_dato_de_criterio, variable de criterio)
+
+		4:
+			Ejecutar la consulta con la función mysqli_stmt_execute(). Esta función devuelve true o false.
+			Necesita como parámetro el objeto mysqli_stmt
+
+					mysqli_stmt_execute(el objeto mysqli_stmt);
+
+		5:
+			Asociar variables al resultado de la consulta. Esto lo conseguimos con la función mysqli_stmt_bind_result(). Devuelve true o false.
+			Necesita como parámetros el objeto mysqli_stmt y tantas variables como columnas en consulta sql.
+
+						mysqli_stmt_bind_result(el objeto de mysqli_stmt,v1,v2,v3,v4...);
+
+		6:
+			Lectura de valores. Para ello utilizamos la función mysqli_stmt_fetch.
+			Pide como parámetro el objeto mysqli_stmt
+
+					mysqli_stmt_fetch(el objeto de mysqli_stmt)	;	
