@@ -1,0 +1,16 @@
+			APIS PHP
+	FORMAS DE CONECTAR CON BBDD
+
+		MYSQL 			MYSQLi 			PDO
+	   (OBSOLETA)	 (RECOMENDADA)	(RECOMENDADA)
+	   						l
+	   						l
+	   						l
+	   			------------------------------
+	   			-							  -
+
+	   			PROCEDIMENTAL 		ORIENTADA A OBJETO
+
+
+
+	   a partir de esta clase utilizaremos POO para trabajar asi que acostumbrarse
