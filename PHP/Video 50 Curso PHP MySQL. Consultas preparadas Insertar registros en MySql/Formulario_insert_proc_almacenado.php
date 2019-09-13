@@ -5,6 +5,7 @@
     
         <meta charset="utf-8">
         <title>Documento sin título</title>
+        
         <style>
 			table{
 				background-color:#FFC;
@@ -14,21 +15,16 @@
 			}
 		h1{
 			width:50%;
-			margin:25px auto;
-			
+			margin:25px auto;	
 			text-align:center;
 			margin-bottom:50px;
 		}
-		
 		body{
 			background-color:#FC9;
 		}
-		
 		#boton{
-			padding-top:25px;
-			
+			padding-top:25px;	
 		}
-		
 		</style>
     </head>
     
