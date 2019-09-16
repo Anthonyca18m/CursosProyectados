@@ -4,7 +4,9 @@
 
 		$conexion = new PDO('mysql:host=localhost; dbname=cursophpone', 'root', '');
 
-		echo "Conexión Satisfactoria";
+		$conexion->exec("SET CHARACTER SET utf8");
+
+		// echo "Conexión Satisfactoria";
 
 	} catch (Exception $e) {
 		
