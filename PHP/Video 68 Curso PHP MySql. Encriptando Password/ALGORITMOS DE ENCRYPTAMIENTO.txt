@@ -1,0 +1,37 @@
+ALGORITMOS DE ENCRYPTAMIENTO
+
+	MD5 -------- md5();
+	este no se recomienda utilizarlo porque ya es muy antiguo
+
+
+
+
+	SHA1--------- sha1();
+	este no se recomienda utilizarlo porque ya es muy antiguo
+
+
+
+	SHA256------- hash();
+	este no se recomienda utilizarlo porque ya es muy antiguo
+
+
+
+
+	BLOWFISH----- cryp();
+			----- password_hash();
+
+	este es recomendable para hoy pero ya va pasar y saldran otros mejores asi que hay que actualizarce
+
+	caracteristicas de flowfish
+
+
+	$2y$15$ba2ec5asd3dad2dad
+
+
+	algoritmo comienta con $2y$
+
+	opciones de algoritmo 15$
+
+	caracteristicas random 
+
+	y hash
