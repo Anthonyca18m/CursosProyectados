@@ -4,7 +4,7 @@
 		$precio = $_POST['precio'];
 		$fecha = $_POST['fecha'];
 		$importado = $_POST['importado'];
-		$p_orig = $_POST['p_orig'];
+		$p_orig = password_hash($_POST['p_orig'], PASSWORD_DEFAULT);
 
 		try {
 

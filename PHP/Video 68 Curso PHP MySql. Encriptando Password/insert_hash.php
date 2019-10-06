@@ -1,35 +1,40 @@
 <?php  
 
-	$user = $_POST['user'];
+	$user = $_POST['usuario'];
 
-	$pass = $_POST['pass'];
+	$pass = $_POST['clave'];
 
 	$pass_cifrado = password_hash($pass, PASSWORD_DEFAULT);//cifrando con cifras automatica
 
-	try {
+	if (!empty($user) && !empty($pass)) {
+
+		try {
 		$con = new PDO('mysql:host=localhost; dbname=cursophpone', 'root', '');
 
 		$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		// $con->exec("SET CHARACTER SET utf8");
 
-		$sql = "INSERT INTO user (id, user, pass) VALUES (NULL, :usu, :pass)";
+		$sql = "INSERT INTO user (user, pass) VALUES ( :usu, :pass)";
 
 		$resultado = $con->prepare($sql);
 
 		$resultado->execute(array(":usu"=> $user, ":pass"=> $pass_cifrado));
 
 
-		if($resultado === true){
+		if($resultado == true){
 			echo "registrado!";
 
 		}else{
 			echo "fracaso";
 		}
 
-	} catch (Exception $e) {
-		die("Error: " . $e->getMessage());
-		
+		} catch (Exception $e) {
+			die("Error: " . $e->getMessage());
+			
+		}
+	}else{
+		echo "CASILLAS INCOMPLETAS";
 	}
 
 
