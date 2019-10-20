@@ -7,7 +7,6 @@
 	$datos_por_pagina = 3;
 
 	
-
 	if(isset($_GET["pag"])){
 
 		if($_GET["pag"]){

@@ -15,7 +15,6 @@
 		
 	<?php 
 		
-
 		require_once("Controller/ProductoController.php");
 
 		require_once("View/ProductosView.php");
