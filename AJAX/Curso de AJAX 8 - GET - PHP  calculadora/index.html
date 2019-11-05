@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    Primer número: <input type="text" id="num1"><br><br>
+    Segundo número: <input type="text" id="num2"><br><br>
+
+    <input type="submit" value="Hazme click" onclick="enviarForm();"/>
+
+    <div id="info"></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+    var resultado = document.getElementById("info");
+
+    function enviarForm() {
+
+        var xmlHttp;
+
+        if (window.XMLHttpRequest) {
+            xmlHttp = new XMLHttpRequest();
+        } else {
+            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        var n = document.getElementById("num1").value;
+        var a = document.getElementById("num2").value;
+        var datos = "numuno=" + n + "&numdos=" + a;
+
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                var mensaje = xmlHttp.responseText;
+
+                resultado.innerHTML = mensaje;
+                
+
+            }
+        }
+        xmlHttp.open("GET", "action.php?" + datos, true);
+        xmlHttp.send();
+    }
+
+    
+
+</script>

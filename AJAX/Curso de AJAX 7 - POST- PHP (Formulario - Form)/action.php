@@ -4,8 +4,8 @@
     $apellido = $_POST["apellido"];
 
     if(empty($nombre) || empty($apellido)){
-        echo "Ingresar datos nombre y apellido";
+        echo "Ingresar datos";
     }else{
-        echo $nombre . ", " . $apellido;
+        echo "Hola " . $nombre . $apellido . "!";
     }
 ?>
