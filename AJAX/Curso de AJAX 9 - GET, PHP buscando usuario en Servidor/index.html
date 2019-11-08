@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        Buscar Persona: <input type="text" onkeyup="mostrarSugerencia(this.value)">
+    </form>
+
+    <p>Sugerencias: </p>
+    <div id="info"></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+    var resultado = document.getElementById("info");
+
+    function mostrarSugerencia(usuario) {
+
+        var xmlHttp;
+
+        if (window.XMLHttpRequest) {
+            xmlHttp = new XMLHttpRequest();
+        } else {
+            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        if (usuario.length === 0) {
+            document.getElementById("info").innerHTML = "";
+        } else {
+            xmlHttp.onreadystatechange = function () {
+                if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                     
+
+                    resultado.innerHTML = xmlHttp.responseText;
+
+
+                }
+            }
+        }
+
+
+        xmlHttp.open("GET", "action.php?nombre=" + usuario, true);
+        xmlHttp.send();
+    }
+
+
+
+</script>
