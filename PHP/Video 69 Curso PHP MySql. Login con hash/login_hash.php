@@ -10,13 +10,13 @@
 
 		try {
 
-			$con = new PDO('mysql:host=localhost; dbname=cursophpone', 'root', '');
+			$con = new PDO('mysql:host=localhost; dbname=cotizadorweb', 'root', '');
 
 			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			$con->exec("SET CHARACTER SET utf8");
 
-			$sql = "SELECT * FROM user WHERE user= :usu ";
+			$sql = "SELECT * FROM user WHERE Ucorreo= :usu ";
 
 			$resultado = $con->prepare($sql);
 
@@ -25,13 +25,13 @@
 //ESTE CODIGO ES PARA VERIFICAR LA PASS CIFRADA
 			while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) {
 				
-				if(password_verify($pass, $registro['pass'])){
+				if(password_verify($pass, $registro['Upass'])){
 					
 					$contador++;
 				}
 			}
 
-			if($contador > 0){
+			if($contador != 0){
 
 				echo "Usuario esta registrado!";
 			}else{

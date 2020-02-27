@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .item-box{
+            float: left;
+            width: 230px;
+            background: #b6b1b1;
+            align-items: center;
+            padding: 5px;
+            margin: 5px;
+        }
+        img{
+            position: relative;
+            left: 15px;
+            margin: 5px;
+        }
+        .item-title{
+            font-size: 16px;
+            font-size: x-large;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        p{
+            font-size: 12px;
+            text-align: center;
+            color: rgb(39, 57, 58);
+        }
+        .item-price{
+            margin: 5px;
+            font-size: 20px;
+        }
+        button{
+            background: #cf4343;
+            border: 0px;
+            padding: 5px;
+            color:antiquewhite;
+            cursor: pointer;
+        }
+
+        .more-info{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="total-cost">Total $/0</div>
+    </header>
+<!--     
+    <div class="item-box" data-id="123">
+        <img src="images/image.png" alt="Imagen">
+        <div class="item-title">Example Destination</div>
+        <p>
+            A very nice place Lorem ipsum dolor switch
+            amet, consectuer adipisihin eli, sed do
+            mangas slid akwodn amiso , sdnuw noens,
+            oeisl
+        </p>
+        <div class="item-price">$199</div>
+        <button>Add to cart</button>
+        <div>
+            <a href="#" class="info-link">More info</a>
+        </div>
+        <div class="more-info">
+            MDSHUYS smwwmi miossj mosaew laempa
+        </div>
+    </div> -->
+
+
+
+    <script>
+        $(document).ready(function(){
+            $.ajax('fileJSON.json', {
+                dataType: 'json',
+                contentType: 'application/json',
+                cache: false
+            }).done(function (response) {
+                //console.log(response); 
+                var html;
+
+                $.each(response, function(index, element){
+                    
+                    html = '<div class="item-box" data-id="' + element.id + '">';
+                    html += '<img src="images/' + element.image + '"/>';
+                    html += '<div class="item-title">' + element.price + '</div>';
+                    html += '<p>' + element.description + '</p>';
+                    html += '<div class="item-price">$' + element.price + '</div>';
+                    html += '<button> ADD TO CART </button>';
+                    html += '<div><a href="#" class="info-link"> More info </a></div>';
+                    html += '<div class="more-info"> <p>' + element.moreInfo + '</p></div>';
+                    html += '</div>'; 
+                    
+                    $('body').append(html);
+
+                });
+            });
+            $("body").on("click", ".info-link", function(event){
+                event.preventDefault();
+                $(this).closest(".item-box").find(".more-info").slideToggle();
+            });
+        });
+
+        //shopping cart
+
+        var cart = 0;
+
+        $('body').on("click", ".item-box button", function(event){
+            event.preventDefault();
+            var id = +$(this).closest('.item-box').data("id");
+            // console.log(id);
+            $.ajax('fileJSONpost.json', {
+                data: {id : id},
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function(response){
+                 console.log(response);
+                cart += response.price;
+                $('#total-cost').text("Total : $/" + cart);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+    #container{
+        background: #bd3d3d;
+        height: 200px;
+        width: 200px;
+    }
+    #mostrar{
+        display: none;
+    }
+</style>
+</head>
+<body>
+    
+    <div id="container"></div>
+    <div id="mostrar">Esta informacion</div>
+    <script>
+        $("#container").on("click", function(){
+            // $("#mostrar").toggle(1000);
+            // $("#mostrar").fadeToggle(1000);
+            // $("#mostrar").fadeIn(1000);
+            // $("#mostrar").fadeOut(1000);
+            // $("#mostrar").slideToggle(1000);
+            // $("#mostrar").slideDown(1000);
+            $("#mostrar").slideUp(1000);
+            // $("#mostrar").fadeOut(1000);
+            // $("#mostrar").fadeOut(1000);
+        });
+    </script>
+</body>
+</html>

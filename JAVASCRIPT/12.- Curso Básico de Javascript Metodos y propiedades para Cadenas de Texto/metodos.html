@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodos y propiedades de cadena de texto</title>
+</head>
+<body>
+    
+    <script>
+        var texto = "este es una cadena";
+
+        document.write(texto.length);//longitud
+        document.write("<br>");
+
+        document.write(texto.substring(3));//corta cadena de texto
+        document.write("<br>");
+
+        document.write(texto.substr(1,5));//corta cadena en especifica de texto
+        document.write("<br>");
+
+        document.write(texto.indexOf("c"));//devuelve la posicion de un caracter en especifico en una cadena de texto
+        document.write("<br>");
+
+        document.write(texto.lastIndexOf("c"));// empieza a buscar desde el final hasta el comienzo
+        document.write("<br>");
+
+        document.write(texto.replace("e", "|"));// reemplaza caracteres
+        document.write("<br>");
+
+        document.write(texto.toUpperCase(texto));// MAYUSCULAS
+        document.write("<br>");
+
+        document.write(texto.toLowerCase(texto));// minisculas
+    </script>
+</body>
+</html>

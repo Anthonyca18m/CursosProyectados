@@ -33,7 +33,7 @@
 			
 			session_start();
 
-			$_SESSION['usuario'] = $_POST['user'];//ALMACENAR EN LA VARIABLE GLOBAL EL LOGIN DEL USUARIO
+			$_SESSION['usuario'];//ALMACENAR EN LA VARIABLE GLOBAL EL LOGIN DEL USUARIO
 
 			header("Location:usuarios_registrados.php");
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="example">
+        <button class="switch">Click me</button>
+        <div id="status"></div>
+        <div id="result"></div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            $(".switch").on("click", function () {
+                $.ajax('animatisons.html',{
+                    beforeSend: function () {//en el transcurso
+                        $("#status").html("cargando...");
+                    }
+                })
+                    .done(function (response) {//cuando ha terminado con exito
+                        $("#result").html(response);
+                        
+                    })
+                    .fail(function (request, errorType, errorMessage) {
+                        /* tipos de errores: timeout(mucho tiempo de espera) , 
+                                             error (algo con el servidor), 
+                                             abort (abortada la peticion), 
+                                             parserror (cuando pides files JSON y no se puede convertir)
+                                             */
+                        console.log(errorType);
+                        alert(errorMessage);
+                    })
+                    .always(function () {// se ejecuta siempre
+                        $("#status").html("Completado");
+                    });
+            });
+
+
+        });
+
+    </script>
+</body>
+
+</html>

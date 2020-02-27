@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTO CHANGE (cuando cambia de valor algo)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+        #resp {
+            display: flexbox;
+            width: 350px;
+            height: 100px;
+            border: 1px seagreen solid;
+            background: rgb(238, 82, 82);
+            margin-top: 20px;
+            color: antiquewhite;
+            font-style: oblique;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <input type="text" id="eventos">
+
+    <div id="resp"></div>
+
+    <script>
+        //keyup o keydown
+        $(document).ready(function () {
+            $("#eventos").on('keyup', function () {
+                $("#resp").html($("#eventos").val());
+            });
+        });
+
+    </script>
+</body>
+
+</html>
