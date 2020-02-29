@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .container{
+            background: #a58f8f;
+            width: 300px;
+            text-align: center;
+            padding: 30px;
+        }
+        .colm{
+            margin-bottom: 20px;
+        }
+        .questionpet{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form method="post" id="form-you">
+        <div class="container">
+            <div class="colm">
+                <label for="">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="colm">
+                <label for="">Address</label>
+                <input type="text" id="address" name="address">
+            </div>
+            <div class="colm">
+                <label for="">Age</label>
+                <input type="number" id="age" name="age">
+            </div>
+            <div class="colm">
+                <label for="">Any pets?</label>
+                <input type="checkbox" id="question" name="question">
+            </div>
+            <div class="colm questionpet">
+                <label for="">Pet</label>
+                <select id="typePet" name="typePet">
+                    <option value="0">SELECCIONAR</option>
+                    <option value="1">CAT</option>
+                    <option value="2">DOG</option>
+                </select>
+                <div id="pet-feedback"></div>
+            </div>
+            <div class="submit">
+                <button type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+    <div id="result"></div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#question").on("change", function(){
+                if ($(this).is(":checked")) {
+                    $(".questionpet").show();
+                } else {
+                    $(".questionpet").hide();
+                    $("#typePet").val(0);
+                    $("#pet-feedback").text("");
+                }
+            });
+            $("#question").trigger('change');//cuando recarga guarda valor
+            
+            $("#typePet").on("change", function(){
+                if ($("#typePet").val() == 1) {
+                    $("#pet-feedback").text("Dogs are great!");
+                } else if ($("#typePet").val() == 2) {
+                    $("#pet-feedback").text("Cats are great!");
+                }else{
+                    $("#pet-feedback").text("");
+                }
+            });
+
+            $("#form-you").on("submit", function(event){
+                event.preventDefault();
+
+                $.ajax("FormSubmitJSON.json", {
+                    type: "POST",
+                    data: $("form-you").serialize()
+                })
+                .done(function(response){
+                    $("#result").html(response.message);
+                })
+            });
+
+        });
+    </script>
+</body>
+
+</html>
