@@ -16,3 +16,5 @@
  * Terminal
  * TSLint
  * TypeScript Importer
+
+%AppData%\npm -- esto es para las variables de entorno
