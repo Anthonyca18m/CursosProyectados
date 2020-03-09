@@ -17,8 +17,10 @@
  * TSLint
  * TypeScript Importer
 
-%AppData%\npm -- esto es para las variables de entorno
-ng new proyectonuevo
-npm install --save @angular/material @angular/cdk
-npm install --save @angular/animations
-ng serve
+%AppData%\npm --                                            esto es para las variables de entorno
+ng new proyectonuevo                                        crear nuevo proyecto
+npm install --save @angular/material @angular/cdk           descargar recursos
+npm install --save @angular/animations                      descargar recursos
+ng serve                                                    correr el proyecto
+
+ng g s services/infoPage                                    crear un servicio para la pagina de datos
