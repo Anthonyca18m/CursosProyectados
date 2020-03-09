@@ -18,3 +18,7 @@
  * TypeScript Importer
 
 %AppData%\npm -- esto es para las variables de entorno
+ng new proyectonuevo
+npm install --save @angular/material @angular/cdk
+npm install --save @angular/animations
+ng serve
