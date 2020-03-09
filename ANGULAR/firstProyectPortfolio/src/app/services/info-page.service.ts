@@ -11,6 +11,7 @@ export class InfoPageService {
   equipo: any[] = [];
 
   constructor( private http: HttpClient ) { 
+    this.cargarInfo();
     this.cargarEquipo();
   }
 
