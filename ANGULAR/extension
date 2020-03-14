@@ -24,3 +24,24 @@ npm install --save @angular/animations                      descargar recursos
 ng serve                                                    correr el proyecto
 
 ng g s services/infoPage                                    crear un servicio para la pagina de datos
+ng g c pages/componenteprobando                             crear un componente para la pagina
+
+las interfaces lo creamos en esta ocasion manualmente src/app/interfaces
+
+
+/*************************************************************************/
+
+para crear un pase a produccion es
+
+    ng build --prod
+
+esto nos optimiza el proyecto de desarrollo a modo de produccion y nos crea una carpeta llamada dist que subiremos al host
+
+
+ahora usar un servidor local para probar recomendaciones el npm i http-server o xampp.. como gustes
+
+
+
+
+
+
