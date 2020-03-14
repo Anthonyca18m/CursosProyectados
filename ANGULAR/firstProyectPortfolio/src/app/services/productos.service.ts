@@ -10,6 +10,7 @@ export class ProductosService {
   cargando = true;
   productos: ProductoInterface[] = [];
 
+  productosFiltrado: ProductoInterface[] = [];
 
   constructor(private http: HttpClient) {
     this.cargarProductos();
@@ -35,5 +36,14 @@ export class ProductosService {
   }
 
   //el backtick `` el js6 deja poder variables con el ${}
+
+  buscarProducto(termino: string){
+
+    this.productosFiltrado = this.productos.filter( producto => {
+      return true;
+    } );
+
+    console.log(this.productosFiltrado);
+  }
 
 }
