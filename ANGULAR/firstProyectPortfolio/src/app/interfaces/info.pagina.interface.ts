@@ -11,3 +11,4 @@ export interface InfoPagina {
   instagram?: string;
   team_work?: any[];
 }
+
