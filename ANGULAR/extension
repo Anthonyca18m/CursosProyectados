@@ -41,6 +41,8 @@ esto nos optimiza el proyecto de desarrollo a modo de produccion y nos crea una 
 ahora usar un servidor local para probar recomendaciones el npm i http-server o xampp.. como gustes
 
 
+al subir al githubpages debes cambiar el nombre de la carpeta del proyecto a docs obligatorio
+
 
 
 
