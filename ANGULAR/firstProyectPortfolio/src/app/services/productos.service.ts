@@ -11,24 +11,29 @@ export class ProductosService {
   productos: ProductoInterface[] = [];
 
 
-  constructor( private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.cargarProductos();
 
   }
 
-  private cargarProductos(){
+  private cargarProductos() {
     this.http.get("https://angular-rest-d2c11.firebaseio.com/productos_idx.json")
-    .subscribe( (resp: ProductoInterface[]) => {
+      .subscribe((resp: ProductoInterface[]) => {
 
-      this.cargando = false;  
-      this.productos = resp;
+        this.cargando = false;
+        this.productos = resp;
 
-      // setTimeout(() => {
-      //   this.cargando = false; 
-      // }, 2000);
-      
-    });
+        // setTimeout(() => {
+        //   this.cargando = false; 
+        // }, 2000);
 
+      });
   }
+
+  getProducto(id: string){                  
+    return this.http.get(`https://angular-rest-d2c11.firebaseio.com/productos/${id}.json`);
+  }
+
+  //el backtick `` el js6 deja poder variables con el ${}
 
 }
