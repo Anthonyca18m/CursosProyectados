@@ -8,6 +8,13 @@
  * Copyright (c) 2019 Daniel Eden
  */
 
+/*
+  Color del Loading
+*/
+svg path,
+svg rect{
+  fill: black;
+}
 @-webkit-keyframes bounce {
   from,
   20%,
