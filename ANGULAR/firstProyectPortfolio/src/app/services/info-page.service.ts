@@ -31,7 +31,7 @@ export class InfoPageService {
     .subscribe((resp: any) => {
       
       this.equipo = resp;
-      console.log(resp);
+      // console.log(resp);
       // console.log(resp["facebook"]);
     });
   }
