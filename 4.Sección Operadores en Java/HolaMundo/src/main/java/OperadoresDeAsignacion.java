@@ -9,12 +9,20 @@
  * @author antho
  */
 public class OperadoresDeAsignacion {
+
     public static void main(String[] args) {
+
+        int a = 3, b = 2;
+
+        int c = a + b;
         
-        int a= 3, b= 2;
         
-        int c = a+b;
-        
-        // += , -=, *= , /= , %=
+        /*
+         += ... sumar e asignar , 
+        -= ... restar e asignar , 
+        *=  ... multiplicar e asignar , 
+        /=  ... dividir  e asignar , 
+        %= ... modulo e asignar 
+         */
     }
 }
