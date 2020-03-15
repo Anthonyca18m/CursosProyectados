@@ -20,7 +20,6 @@ public class ConversionDeTipos {
         double valorPI = Double.parseDouble("3.141615");
         System.out.println(valorPI + 10);
 
-        //Convertir a char
         char c = "hola".charAt(0);
 
         System.out.println(c);
