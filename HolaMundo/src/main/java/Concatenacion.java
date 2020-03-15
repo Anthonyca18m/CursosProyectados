@@ -8,16 +8,14 @@
  *
  * @author antho
  */
-public class Variables {
+public class Concatenacion {
 
     public static void main(String[] args) {
+        
+        var usuario = "Max";
+        var saludo = "Hola";
 
-        String saludar = "saludos";
-
-        System.out.println(saludar);
-
-        // solo se puede utilizar var en java jdk v10+
-        var saludo = "saludooos";
-        System.out.println("saludo");
+        System.out.println(saludo + " " + usuario);
     }
+
 }
