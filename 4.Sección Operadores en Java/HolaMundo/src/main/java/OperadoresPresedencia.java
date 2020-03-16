@@ -8,17 +8,17 @@
  *
  * @author antho
  */
-public class OperadoresTernario {
+public class OperadoresPresedencia {
     
     public static void main(String[] args) {
         
-        //var resultado = (expresion) ? true : false;
-        
-        var resultado = (3>2) ? true : false;
-        
-        System.out.println("resultado: " + resultado);
-        
-        
-    }
+        var x = 5;
+        var y = 10;
+        var z = ++x + y--;
     
+        System.out.println("x: " + x);
+        System.out.println("y: " + y);
+        System.out.println("z: " + z);
+    
+    }
 }
