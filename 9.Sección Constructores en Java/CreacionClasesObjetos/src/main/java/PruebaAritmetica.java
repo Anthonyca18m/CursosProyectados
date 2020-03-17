@@ -18,6 +18,10 @@ public class PruebaAritmetica {
         int resultado = aritmetica.sumar();
         
         System.out.println("resultado : " + resultado);
+        
+        Aritmetica aritmetica2 = new Aritmetica(5,7);
+        
+        System.out.println("resultado 2: " + aritmetica2.sumar());
     }
     
 }

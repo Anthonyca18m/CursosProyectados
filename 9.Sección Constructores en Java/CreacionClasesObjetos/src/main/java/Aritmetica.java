@@ -18,6 +18,7 @@ public class Aritmetica {
     }
 
     public Aritmetica(int a, int b) {
+        System.out.println("Ejecutando constructor con argumentos");
         this.a = a;
         this.b = b;
     }
@@ -27,4 +28,7 @@ public class Aritmetica {
         resultado = a + b;// se utilizan los atributos de la clase
         return resultado;
     }
+    
+    
+    
 }
