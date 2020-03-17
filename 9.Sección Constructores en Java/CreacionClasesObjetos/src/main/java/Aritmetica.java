@@ -9,14 +9,22 @@
  * @author antho
  */
 public class Aritmetica {
+    
+    int a;
+    int b;
 
     public Aritmetica() {
         System.out.println("Constructor vacio");
     }
+
+    public Aritmetica(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
    
-    public int sumar(int a, int b) {
+    public int sumar() {
         int resultado;
-        resultado = a + b;
+        resultado = a + b;// se utilizan los atributos de la clase
         return resultado;
     }
 }

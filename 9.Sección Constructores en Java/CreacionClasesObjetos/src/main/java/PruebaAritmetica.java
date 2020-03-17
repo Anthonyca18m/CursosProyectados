@@ -13,8 +13,9 @@ public class PruebaAritmetica {
     public static void main(String[] args) {
         
         Aritmetica aritmetica = new Aritmetica();
-        
-        int resultado = aritmetica.sumar(5, 6);
+        aritmetica.a = 3;
+        aritmetica.b = 3;
+        int resultado = aritmetica.sumar();
         
         System.out.println("resultado : " + resultado);
     }
