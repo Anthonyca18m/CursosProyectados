@@ -1,7 +1,0 @@
-parametros de una cookie
-
-	vigencia
-
-	directorio de actuacion
-
-eliminacion de una cookie
