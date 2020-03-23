@@ -1,1 +1,0 @@
-Comenzamos a ver en este vídeo las estructuras condicionales en PHP.
