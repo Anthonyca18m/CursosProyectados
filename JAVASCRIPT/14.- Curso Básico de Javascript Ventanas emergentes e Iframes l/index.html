@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+    #login {
+        font-size: medium;
+        font-style: italic;
+        margin: 20px;
+    }
+    #form{
+        margin: 20px;
+    }
+</style>
+
+<body>
+    <a href="#" id="login">Has login</a>
+
+    <form action="" method="post" id="form">
+
+        <label>Usuario: </label>
+        <input type="text" id="user" name="user"><br><br>
+
+        <label>Password: </label>
+        <input type="password" id="pass" name="pass"><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+
+    <script>
+
+        $(document).ready(function (e){
+            
+            $("#form").hide()
+            e.preventDefault()
+        })
+
+
+        $("#login").on("click", function(){
+
+            $("#form").toggle(300)
+        })
+
+    </script>
+
+</body>
+
+</html>
