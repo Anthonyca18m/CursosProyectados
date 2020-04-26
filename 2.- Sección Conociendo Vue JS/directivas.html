@@ -1,0 +1,47 @@
+<!-- 
+    LAS DIRECTIVAS
+        Es un atributo especial con el prefijo v- que realiza algo en el DOM de forma
+        reactiva, y aplica efectos secundarios sobre el DOM cuando cambian los valores de las expresiones
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Script para ejemplos básicos -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <p v-if="show">Hola</p>
+        <p v-else>Bye</p>
+
+        <br>
+
+        <ul>
+            <li v-for="user in usuarios">{{ user.nombre }}</li>
+        </ul>
+        
+    </div>
+    
+</body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                show : true,
+                usuarios: [
+                    { nombre: 'USER 1' },
+                    { nombre: 'USER 2' }
+                ]
+            }
+        },
+    })
+</script>
