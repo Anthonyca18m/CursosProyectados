@@ -11,7 +11,7 @@
 
     <div id="app">
         <ul>
-            <li v-for="(animal, i) in animals" :key="i">El {{ animal }} hace {{ sonido[i] }} </li>
+            <li v-for="(animal, sonido) in animals" :key="i">El {{ animal }} hace {{ sonido }}</li>
         </ul>
     </div>
     
@@ -23,8 +23,10 @@
         el: '#app',
         data() {
             return {
-               animals: ["perro", "gato", "pajaro"],
-               sonido: ["woof", "meof", "tweet"] 
+                animals: {
+                    perro: "woof",
+                    gato: "meof"
+                }
             }
         },
     })
