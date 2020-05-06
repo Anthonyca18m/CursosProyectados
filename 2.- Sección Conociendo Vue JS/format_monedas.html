@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Script para ejemplos básicos -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../libraries/accounting.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in inventary">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price | moneda }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    
+    Vue.filter('moneda', function(value){
+        return accounting.formatMoney(value)
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+            inventary: [
+                { name: 'Galaxy', price: '250' },
+                { name: 'Prime', price: '450' },
+                { name: 'Xiami', price: '550' }
+            ]
+        }
+    })
+
+</script>
+<!-- Para la siguiente lección, 
+vamos a necesitar que copies las siguientes 
+direcciones en un bloc de notas, para luego utilizarlo en tu programa.
+
+Librería Accounting.js: http://openexchangerates.github.io/accounting.js/
+
+CDN de la librería:
+
+En el video verás esta dirección: 
+https://cdn.jsdelivr.net/accounting.js/0.3.2/accounting.js
+
+La dirección anterior ya n esta funcionando, 
+pero puedden utilizar esta nueva dirección: 
+https://raw.githubusercontent.com/openexchangerates/accounting.js/master/accounting.js -->
