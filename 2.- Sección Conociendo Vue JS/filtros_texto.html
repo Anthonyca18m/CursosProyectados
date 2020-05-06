@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Script para ejemplos básicos -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        
+        {{ 'septiembre' | capitalize }}
+        <!-- primera letra mayuscula 
+        creando nuestro propio filtro -->
+    </div>
+    
+</body>
+</html>
+
+<script>
+
+    Vue.filter('capitalize', function (string) {
+
+        var firstCaracter = string.charAt(0).toUpperCase()
+        var restoCaracteres = string.slice(1, string.length)
+
+        return firstCaracter + restoCaracteres
+    })
+
+    new Vue({
+        el: '#app'
+    })
+</script>
