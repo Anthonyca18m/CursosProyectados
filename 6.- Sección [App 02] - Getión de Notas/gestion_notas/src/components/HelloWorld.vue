@@ -7,23 +7,29 @@
     </div>
 
     <div class="row">
+
+      <div class="col-sm-12">
+        <div class="alert alert-warning" v-show="vacio" role="alert">
+          Los campos no deben estar vacios o llenos por espacios.
+        </div>
+      </div>
       <div class="col-sm-12">
         <div class="form-group">
           <label for>Titulo</label>
-          <input type="text" class="form-control" v-model="nota.title" />
+          <input type="text" class="form-control" v-model.trim="nota.title" />
         </div>
       </div>
 
       <div class="col-sm-12">
         <div class="form-group">
           <label for>Texto</label>
-          <textarea type="text" class="form-control" v-model="nota.text" />
+          <textarea type="text" class="form-control" v-model.trim="nota.text" />
         </div>
       </div>
 
       <div class="col-sm-12">
         <button @click="agregarNota" class="btn btn-outline-success mr-3">Guardar</button>
-        <button class="btn btn-outline-secondary">Cancelar</button>
+        <button @click="limpiarNota" class="btn btn-outline-secondary">Cancelar</button>
       </div>
     </div>
 
@@ -62,21 +68,37 @@ export default {
         title: "",
         text: ""
       },
-      notas: []
+      notas: [],
+      vacio : false
     };
   },
   methods: {
     agregarNota: function() {
-      let { text, title } = this.nota;
+      let { text, title } = this.nota
 
-      this.notas.push({
-        title,
-        text,
-        fecha: new Date(Date.now())
-      });
+      if (title === '' || text === '') {
+        
+        this.vacio = true
+        setTimeout(() => {
+          this.vacio = false
+        }, 4000);
+
+      } else {
+        this.notas.push({
+          title,
+          text,
+          fecha: new Date(Date.now())
+        });
+        this.nota.title = ''
+        this.nota.text = ''
+      }
     },
     eliminarNota: function(nota){
       return this.notas.splice(nota, 1)
+    },
+    limpiarNota: function(){
+      this.nota.title = ''
+      this.nota.text = ''
     }
   }
 };
