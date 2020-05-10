@@ -1,0 +1,44 @@
+[
+    {
+        "id": "01",
+        "titulo": "Guitarra eléctrica",
+        "descripcion": "aslkdnsasndo oiwjheas llñidssnmd skdshbywdna aksdn uasnd ksdnbas duasnbdasjkd bnasjd as",
+        "imagen": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1289&q=80",
+        "precio": "1200.00"
+    },
+    {
+        "id": "02",
+        "titulo": "iPhone",
+        "descripcion": "aslkdnsasndo oiwjheas llñidssnmd skdshbywdna aksdn uasnd ksdnbas duasnbdasjkd bnasjd as",
+        "imagen": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1289&q=80",
+        "precio": "1800.00"
+    },
+    {
+        "id": "03",
+        "titulo": "Reloj antiguo",
+        "descripcion": "aslkdnsasndo oiwjheas llñidssnmd skdshbywdna aksdn uasnd ksdnbas duasnbdasjkd bnasjd as",
+        "imagen": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1289&q=80",
+        "precio": "200.00"
+    },
+    {
+        "id": "04",
+        "titulo": "Cámara Vintage",
+        "descripcion": "aslkdnsasndo oiwjheas llñidssnmd skdshbywdna aksdn uasnd ksdnbas duasnbdasjkd bnasjd as",
+        "imagen": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1289&q=80",
+        "precio": "950.00"
+    },
+    {
+        "id": "05",
+        "titulo": "Taza Cubana",
+        "descripcion": "aslkdnsasndo oiwjheas llñidssnmd skdshbywdna aksdn uasnd ksdnbas duasnbdasjkd bnasjd as",
+        "imagen": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1289&q=80",
+        "precio": "99.00"
+    },
+    {
+        "id": "06",
+        "titulo": "Amazón Kindle",
+        "descripcion": "aslkdnsasndo oiwjheas llñidssnmd skdshbywdna aksdn uasnd ksdnbas duasnbdasjkd bnasjd as",
+        "imagen": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1289&q=80",
+        "precio": "99.00"
+    }
+]
