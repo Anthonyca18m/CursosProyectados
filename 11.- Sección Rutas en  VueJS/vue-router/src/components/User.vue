@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
       <h2>Nombre : {{ $route.params.id }} </h2>
   </div>
 </template>

@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
 import Users from '../views/Users.vue'
+import Login from '../views/Login.vue'
+import Signup from '../views/Signup.vue'
 
 Vue.use(VueRouter)
 
@@ -21,16 +23,10 @@ Vue.use(VueRouter)
     // which is lazy-loaded when the route is visited.
     component: About //() => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-  {
-    path: '/contact',
-    name: 'Contact',
-    component: Contact
-  },
-  {
-    path: '/users/:id',
-    name: 'Users',
-    component: Users
-  }
+  { path: '/contact', name: 'Contact', component: Contact },
+  { path: '/users/:id', name: 'Users', component: Users },
+  { path: '/login', name: 'Login', component: Login },
+  { path: '/signup', name: 'Signup', component: Signup }
 ]
 
 const router = new VueRouter({
