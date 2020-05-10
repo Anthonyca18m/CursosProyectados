@@ -26,7 +26,13 @@ Vue.use(VueRouter)
   { path: '/contact', name: 'Contact', component: Contact },
   { path: '/users/:id', name: 'Users', component: Users },
   { path: '/login', name: 'Login', component: Login },
-  { path: '/signup', name: 'Signup', component: Signup }
+  { path: '/signup', name: 'Signup', component: Signup },
+  {
+    path : '/registrarse', redirect : '/signup'
+  },
+  {
+    path : '/*', redirect : '/'
+  }
 ]
 
 const router = new VueRouter({
