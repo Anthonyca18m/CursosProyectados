@@ -6,15 +6,12 @@ import Contact from '../views/Contact.vue'
 import Users from '../views/Users.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
+import ProductIndex from '../views/products/index.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
+  { path: '/', name: 'Home', component: Home },
   {
     path: '/about',
     name: 'About',
@@ -27,12 +24,11 @@ Vue.use(VueRouter)
   { path: '/users/:id', name: 'Users', component: Users },
   { path: '/login', name: 'Login', component: Login },
   { path: '/signup', name: 'Signup', component: Signup },
-  {
-    path : '/registrarse', redirect : '/signup'
-  },
-  {
-    path : '/*', redirect : '/'
-  }
+  { path: '/products', name: 'ProductIndex', component: ProductIndex },
+
+  // REDIRECCIONANDO A PAGINAS POR DEFAULT
+  { path : '/registrarse', redirect : '/signup' },
+  { path : '/*', redirect : '/' }
 ]
 
 const router = new VueRouter({
