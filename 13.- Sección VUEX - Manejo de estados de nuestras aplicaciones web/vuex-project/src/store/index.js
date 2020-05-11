@@ -6,17 +6,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     msg : 'Bienvenido al curso VueJS',
-    amigos: [],
-    amigo : 'Jose'
+    amigos: []
   },
   mutations: {
-    addAmigo:function(state){
-      state.amigos = [state.amigo, ...state.amigos]
+    addAmigo:function(state, amigo){
+      state.amigos = [amigo, ...state.amigos]
     }
   },
   actions: {
-    addAmigoAction:function(context){
-      context.commit('addAmigo')
+    addAmigoAction:function(context, amigo){
+      context.commit('addAmigo', amigo)
     }
   },
   modules: {
