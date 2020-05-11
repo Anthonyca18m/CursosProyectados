@@ -1,6 +1,6 @@
 <template>
   <div class="col-sm-12 mt-2 border rounded">
-      <h1 class="text-center font-weight-bold">Product title</h1>
+      <h1 class="text-center font-weight-bold">Product title {{ id }} </h1>
       <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1308&q=80" 
         class="img-fluid" alt="..." />
 
@@ -17,7 +17,9 @@
 export default {
   name: "ProductoDetalleComponent",
   data() {
-    return {};
+    return {
+        id : this.$route.params.id
+    };
   },
   methods: {}
 };
