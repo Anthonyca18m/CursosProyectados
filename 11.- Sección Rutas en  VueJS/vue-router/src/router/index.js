@@ -7,6 +7,7 @@ import Users from '../views/Users.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import ProductIndex from '../views/products/index.vue'
+import Product from '../views/products/ProductoDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,7 @@ Vue.use(VueRouter)
   { path: '/login', name: 'Login', component: Login },
   { path: '/signup', name: 'Signup', component: Signup },
   { path: '/products', name: 'ProductIndex', component: ProductIndex },
+  { path: '/product/:id', name: 'Product', component: Product },
 
   // REDIRECCIONANDO A PAGINAS POR DEFAULT
   { path : '/registrarse', redirect : '/signup' },
