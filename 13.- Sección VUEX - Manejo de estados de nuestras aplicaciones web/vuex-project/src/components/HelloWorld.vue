@@ -3,9 +3,11 @@
     <h1>{{ $store.getters.getMsg }}</h1>
     <p></p>
     <h3>Amigos</h3>
+    <input type="text" name="" id="">
+    <button @click="addAmigo()">Agregar Amigo</button>
     <ul>
-      <li>
-        <a href="" target="_blank" rel="noopener">babel</a>
+      <li v-for="(item, index) in $store.getters.getAmigos" :key="index">
+        <a href="" target="_blank" rel="noopener"> {{ item }} </a>
         <button>x</button>
       </li>
     </ul>
@@ -18,6 +20,11 @@ export default {
   // props: {
   //   msg: String
   // }
+  methods: {
+    addAmigo:function(){
+      return this.$store.dispatch('addAmigoAction')
+    }
+  },
 }
 </script>
 
