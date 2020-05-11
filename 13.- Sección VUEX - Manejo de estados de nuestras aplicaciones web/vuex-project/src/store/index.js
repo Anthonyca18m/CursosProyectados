@@ -11,11 +11,17 @@ export default new Vuex.Store({
   mutations: {
     addAmigo:function(state, amigo){
       state.amigos = [amigo, ...state.amigos]
+    },
+    eliminarAmigo:function(state, index){
+      state.amigos.splice(index, 1)
     }
   },
   actions: {
     addAmigoAction:function(context, amigo){
       context.commit('addAmigo', amigo)
+    },
+    eliminarAmigoActivo:function(context, index){
+      context.commit('eliminarAmigo', index)
     }
   },
   modules: {

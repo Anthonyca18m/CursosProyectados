@@ -3,12 +3,13 @@
     <h1>{{ $store.getters.getMsg }}</h1>
     <p></p>
     <h3>Amigos</h3>
-    <input type="text" name="" id="" v-model="amigo">
+    <input type="text" name="" id="" v-model="amigo"
+    @keyup.enter="addAmigo(amigo)">
     <button @click="addAmigo(amigo)">Agregar Amigo</button>
     <ul>
       <li v-for="(item, index) in $store.getters.getAmigos" :key="index">
         <a href="" target="_blank" rel="noopener"> {{ item }} </a>
-        <button>x</button>
+        <button @click="eliminarAmigo(index)">x</button>
       </li>
     </ul>
   </div>
@@ -29,6 +30,9 @@ export default {
     addAmigo:function(){
       this.$store.dispatch('addAmigoAction', this.amigo)
       return this.amigo = ''
+    },
+    eliminarAmigo:function(index){
+      return this.$store.dispatch('eliminarAmigoActivo', index)
     }
   },
 }
