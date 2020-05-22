@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
             break;
         case "/home":
             log.info("una app con Nodejs")
-            res.write("<h1>Home<h1>")
+            res.write(req.url)
             break;
     }
 
