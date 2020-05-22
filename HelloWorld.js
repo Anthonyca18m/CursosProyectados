@@ -1,4 +1,11 @@
+// modulos de core
 const http = require("http")
+const fs = require("fs")
+// modulos locales
+const log = require("./modules/my-log")
+
+
+
 
 const server = http.createServer((req, res) => {
 
@@ -9,6 +16,7 @@ const server = http.createServer((req, res) => {
             res.write("<h1>Hello World<h1>")
             break;
         case "/home":
+            log.info("una app con Nodejs")
             res.write("<h1>Home<h1>")
             break;
     }
