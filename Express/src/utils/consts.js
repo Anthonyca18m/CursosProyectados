@@ -1,1 +1,1 @@
-var firebase = require("../../libs/firebase");
+const firebase = require('../../libs/firebase');
