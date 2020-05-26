@@ -15,9 +15,15 @@ app.get('/info', (request, response) => {
   response.send('Info');
 });
 
+app.get('/country', (request, response) => {
+  console.log('request.query', request.query);
+  response.json(countries[request.query.code]);
+});
+
 app.get('*', (request, response) => {
   response.status(404).send('Not found');
 });
+
 
 // var server = http.createServer(function (request, response) {
 //   var parsed = url.parse(request.url);
