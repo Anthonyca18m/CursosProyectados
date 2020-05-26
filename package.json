@@ -1,0 +1,23 @@
+{
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "curso de nodejs",
+  "main": "HelloWorld.js",
+  "scripts": {
+    "start": "node HelloWorld.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anthonyca18m/CursosProyectados.git"
+  },
+  "author": "Anthonyca18m",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anthonyca18m/CursosProyectados/issues"
+  },
+  "homepage": "https://github.com/Anthonyca18m/CursosProyectados#readme",
+  "dependencies": {
+    "countries-list": "^2.5.4"
+  }
+}
