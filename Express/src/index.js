@@ -21,8 +21,16 @@ app.get('/country', (request, response) => {
 });
 
 app.get('/languages/:lang', (request, response) => {
-  console.log('request.params', request.params);
-  response.json(languages[request.params.lang]);
+  // console.log('request.params', request.params);
+  const lang = languages[request.params.lang];
+  if (lang) {
+    response.json({ status: 'OK', data: lang });
+  } else {
+    response.status(404).json({
+      status: 'NOT_FOUND',
+      message: 'language not found',
+    });
+  }
 });
 
 app.get('*', (request, response) => {
