@@ -31,4 +31,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Levels::class);
     }
+
+    // RELACIÓN DE UN USUARIO PERTENECE O TIENE MUCHOS GRUPOS
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class)->withTimestamps();
+    }
 }

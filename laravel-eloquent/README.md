@@ -4,3 +4,13 @@
 
 
 4 - Relación uno a uno | Eloquent ORM | Rimorsoft Online
+
+    hasOne
+
+5 - Relación uno a muchos | Eloquent ORM | Rimorsoft Online
+
+    hasMany | belongsTo
+
+6 - Relación muchos a muchos | Eloquent ORM | Rimorsoft Online
+
+    belongsToMany | y configuración para que las fechas seasn sincronizadas con withTimestamps() en el modelo
