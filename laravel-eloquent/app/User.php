@@ -25,4 +25,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+    // RELACIÓN DE UN USUARIO PERTENECE A UN NIVEL
+    public function level()
+    {
+        return $this->belongsTo(Levels::class);
+    }
 }
