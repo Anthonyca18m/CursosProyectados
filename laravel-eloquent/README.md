@@ -14,3 +14,7 @@
 6 - Relación muchos a muchos | Eloquent ORM | Rimorsoft Online
 
     belongsToMany | y configuración para que las fechas seasn sincronizadas con withTimestamps() en el modelo
+
+7 - Edición de vista Welcome | Rimorsoft Online
+    
+    enviando una lista de variables a la vista welcome
