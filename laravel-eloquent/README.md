@@ -23,3 +23,13 @@
 
     hasOneThrough
 
+9 - Todas las tablas: Category, Tag, Taggables, Post y mas | Rimorsoft Online
+
+    viendo el polimorfismo en la db con
+    /**
+    * CADA RELACIÓN POLIFORMICA DEBE TERMINAR EN able
+    * ESTE CAMPO VA CREAR 2 CAMPOS UNA QUE HACE REFERENCIA AL ID, Y OTRO A LA ENTIDAD
+    * CON ESTO INTENTAS SALVAS EL COMENTARIO DE UN POST, O UN VIDEO YA QUE EN LOS DOS CASOS
+    * PODRÍA HABER UN COMENTARIO
+    */
+    $table->morphs('campo');
