@@ -33,3 +33,7 @@
     * PODRÍA HABER UN COMENTARIO
     */
     $table->morphs('campo');
+
+11 - Relaciones y configuración de entidades | Polimorfismo | Rimorsoft Online
+
+    explicando las relaciones que tiene cada relación y tambien entendiendo más afondo el polimorfismo

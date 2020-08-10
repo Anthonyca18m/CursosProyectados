@@ -24,7 +24,6 @@ class CreateImagesTable extends Migration
              * CON ESTO INTENTAS SALVAS EL IMAGE DE UN POST, O UN COMENTARIO YA QUE EN LOS DOS CASOS
              * PODRÍA HABER UNA IMAGEN
              */
-            $table->morphs('commnetable');
             $table->morphs('imageable');
 
             $table->timestamps();
