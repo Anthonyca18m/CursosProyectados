@@ -37,4 +37,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Group::class)->withTimestamps();
     }
+
+    // RELACIÓN DE UN USUARIO TIENE UNA LOCACIÓN A TRAVES DE UN PERFIL
+    public function location()
+    {
+        return $this->hasOneThrough(Location::class, Profile::class);
+    }
 }

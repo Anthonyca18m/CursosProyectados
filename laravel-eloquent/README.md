@@ -18,3 +18,8 @@
 7 - Edición de vista Welcome | Rimorsoft Online
     
     enviando una lista de variables a la vista welcome
+
+8 - Relación uno a uno a través de... | Eloquent ORM | Rimorsoft Online
+
+    hasOneThrough
+
