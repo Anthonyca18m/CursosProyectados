@@ -1,8 +1,0 @@
-Ámbito de las variables en PHP:
-
-Local: declara dentro de una función, solo funciona dentro de ella.
-
-Global: declara en cualquier lugar del código PHP, funciona en cualquier lugar del código.
-
-Super Global: declarada como array. Visivle y accesible desde fuera del script PHP.
-

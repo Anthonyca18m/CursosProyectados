@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTADO - COMPRAS</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div id="lista-compras">
+
+        <div class="container">
+
+            <div class="row">
+                <h3> {{ header.toLocaleUpperCase() }} </h3>
+
+                <input type="text" v-model="new_item" v-on:keyup.enter="saveItem()" placeholder="ingresar nueva compra">
+
+                <ul v-for="(item, i) in utiles" _:key="i" class="collection">
+                    <li class="collection-item"> {{ item }} 
+                        <p class="secondary-content" v-on:click="dropItem(i)"> 
+                          x
+                        </p>
+                    </li>
+                </ul>
+
+                <div v-if="utiles.length === 0" class="card light-blue lighten-5">
+                    <div class="card-content light-blue-text">
+                        <p>No hay productos en la lista</p>
+                    </div>
+                </div>
+
+                <button v-if="utiles.length > 0" 
+                    v-on:click="saveCompra()"
+                    class="btn waves-effect light-blue accent-4">
+                    GUARDAR<i class="mdi-content-send right"></i>
+                </button>
+                <button v-if="utiles.length > 0" v-on:click="cancelPedido()" class="btn waves-effect cyan darken-4">
+                    CANCELAR<i class="mdi-content-send right"></i>
+                </button>
+            </div>
+
+            <div class="divider"></div>
+            <div class="row">
+                <h4>Mis Compras</h4>
+                <div v-if="compras.length > 0" v-for=" c in compras">
+                    <p class="btn waves-effect light-blue accent-4"> {{ c }}  </p>
+                </div>
+
+                <div v-else class="card light-blue lighten-5">
+                    <div class="card-content light-blue-text">
+                        <p>No a hecho ninguna compra</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+
+</html>
+
+<script>
+    const app = new Vue({
+        el: "#lista-compras",
+        data: {
+            header: "VueJS iniciado con exito! Bienvenidos.",
+            new_item: '',
+            utiles: [],
+            compras: []
+        },
+        methods: {
+            saveItem() {
+                if (this.new_item.trim() === '') {
+                    alert("No ha ingresado un producto")
+                } else {
+                    this.utiles.push(this.new_item)
+                }
+                this.new_item = ''
+            },
+            cancelPedido() {
+                this.utiles = []
+            },
+            dropItem(item){
+                this.utiles.splice(item, 1)
+            },
+            saveCompra(){
+                this.compras = this.utiles
+                this.utiles = []
+                alert("Compra guardada!.")
+            }
+        },
+        computed: {
+            
+        },
+        watch: {
+
+        }
+    })
+</script>

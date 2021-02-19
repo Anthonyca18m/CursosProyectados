@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Script para ejemplos básicos -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <input type="text" v-model="name">
+        <input type="text" id="apellido" value="Snow">
+        <button v-on:click="saveLastName">Save</button>
+        <br><br>
+        <output> {{ computedFullName }} </output>
+        
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'tom'
+        },
+        computed: {
+            //son funciones que estan a la espera automatica que se activen
+            computedFullName(){
+                return this.name + ' ' + apellido 
+            }
+        },
+        methods: {
+            saveLastName(){
+                apellido = this.$el.querySelector('#apellido').value
+            }
+        },
+    })
+
+</script>

@@ -1,0 +1,16 @@
+extends para VSC
+
+Material Icon Theme => para hacer más amigable el VSC para los archivos
+Vetur => Recomendado:: para trabajar con VueJS para el reconocimiento de componentes
+Vue VSCode Snippets => autocomplete de vue
+Vue Peek => enrutador de link ( para buscar más rápido los archivos )
+
+
+
+
+
+
+
+
+
+

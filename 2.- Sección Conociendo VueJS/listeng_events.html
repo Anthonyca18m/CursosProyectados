@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Script para ejemplos básicos -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <p>{{ contador }}</p>
+        <button v-on:click="incrementContador()">Incrementar +1</button>
+        <input type="number" v-model="contadormodificado" 
+        @keyup.enter="cambiarContador()">
+    </div>
+    <!-- v-on o @ da lo mismo son abreviasiones nada más -->
+</body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            contador : 0,
+            contadormodificado : 0
+        },
+        methods: {
+            incrementContador(){
+                this.contador++
+            },
+            cambiarContador(){
+                this.contador = this.contadormodificado
+            }
+            
+        },
+        computed: {
+            
+        },
+    })
+</script>

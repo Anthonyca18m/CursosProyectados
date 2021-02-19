@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watcher or Observable</title>
+    <!-- Script para ejemplos básicos -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        Página se encuentra {{ isActive === 'active' ? isActive : 'Inactive' }}
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            isActive: 'active'
+        },
+        computed: {
+        },
+        methods: {
+            
+        },
+        watch: {
+            isActive:function(){
+                console.log("Cambio valor de estado")
+            }
+        },
+    })
+
+</script>
