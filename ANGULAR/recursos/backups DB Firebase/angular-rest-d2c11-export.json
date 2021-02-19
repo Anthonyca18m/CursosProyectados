@@ -1,0 +1,21 @@
+{
+  "equipo" : [ {
+    "area" : "sistemas",
+    "frase" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+    "nombre" : "anthony c.a",
+    "subtitulo" : "Técnico de desarrollo de sistemas",
+    "url" : "https://firebasestorage.googleapis.com/v0/b/angular-rest-d2c11.appspot.com/o/team-1.jpg?alt=media&token=0114cdc8-2115-4cf5-88f7-093b322b7f1b"
+  }, {
+    "area" : "sueñolandia",
+    "frase" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+    "nombre" : "tom parker",
+    "subtitulo" : "Ing en dormilandia",
+    "url" : "https://firebasestorage.googleapis.com/v0/b/angular-rest-d2c11.appspot.com/o/team-3.jpg?alt=media&token=634f346d-4ece-471b-a974-6c2de476846e"
+  }, {
+    "area" : "queatering",
+    "frase" : "loren ipínms doirlo loror if no sated wackl lonrens if adisipisc oprer ",
+    "nombre" : "alison V.A",
+    "subtitulo" : "Ing. testing",
+    "url" : "https://firebasestorage.googleapis.com/v0/b/angular-rest-d2c11.appspot.com/o/team-2.jpg?alt=media&token=d9135c2e-7777-4838-9834-78577ebbfa23"
+  } ]
+}
