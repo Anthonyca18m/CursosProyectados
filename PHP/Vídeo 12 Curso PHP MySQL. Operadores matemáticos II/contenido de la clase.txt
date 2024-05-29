@@ -1,1 +1,0 @@
-Continuamos desarrollando el sencillo ejemplo del vídeo anterior para ver el uso de los operadores básicos.

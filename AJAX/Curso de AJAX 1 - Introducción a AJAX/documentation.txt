@@ -1,7 +1,0 @@
-AJAX 
-
-Asynchronous JavaScript And XML (JavaScript asíncrono y XML)
-
-
-SIRVE PARA PASAR PARAMETROS A PAGINA SIN NECESIDAD DE RECARGAR
-
