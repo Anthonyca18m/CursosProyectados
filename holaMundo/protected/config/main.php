@@ -8,7 +8,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
-	'theme' => 'classic',
+	'timeZone' => 'America/Lima',
+	'theme' => 'classic-empty',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -42,11 +43,12 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'showScriptName' => false,
-			'urlSuffix' => '.html',
+			// 'urlSuffix' => '.html',
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				'<controller:\w+>/delete/<id:\d+>'=>'<controller>/delete',
 			),
 		),
 		
