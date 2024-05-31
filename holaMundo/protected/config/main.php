@@ -17,6 +17,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.vendor.yii.yii1.*'
 	),
 
 	'modules'=>array(

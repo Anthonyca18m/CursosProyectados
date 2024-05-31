@@ -1,6 +1,6 @@
 <?php 
 
-class Sede extends CActiveRecord
+class Trabajador extends CActiveRecord
 {
     public static function model($model = __CLASS__)
     {
@@ -9,20 +9,23 @@ class Sede extends CActiveRecord
 
     public function tableName()
     {
-        return 'sedes';
+        return 'trabajadores';
     }
 
     public function relations()
     {
         return array(
-            'trabajadores' => array(self::MANY_MANY, 'Trabajador', 'sedes_trabajadores(sede_id, trabajador_id)'),
+            'sedesTrabajadores' => array(self::HAS_MANY, 'SedeTrabajador', 'trabajador_id'),
+            'sedes' => array(self::MANY_MANY, 'Sede', 'sedes_trabajadores(trabajador_id, sede_id)'),
+            'cargo' => array(self::BELONGS_TO, 'Cargo', 'cargo_id'),
         );
     }
+
 
     public function rules()
     {
         return array(
-            array('empresa_id, nombre, direccion, estado', 'required', 'message' => 'El campo es obligatorio.'),
+            // array('nombre, direccion, estado', 'required', 'message' => 'El campo es obligatorio.'),
 
 
             // array('nombre', 'length', 'min' => 2, 'max' => 200, 

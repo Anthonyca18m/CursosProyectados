@@ -2,8 +2,8 @@
 	<div class="card">
 		<div class="card-body">
 			<div class="row">
-				<div class="col-lg-12 d-flex justify-content-end">
-					<button class="btn btn-primary" @click="nuevo('#modal-re')">Registrar Nuevo</button>
+				<div class="col-lg-12 d-flex justify-content-end gap-2">
+					<button class="btn btn-primary" @click="nuevo('#modal-re')">Nueva Empresa</button>
 				</div>
 				<div class="col-lg-12">
 					<div class="table-responsive">
@@ -36,6 +36,7 @@
 										<button class="btn btn-sm btn-primary" @click="editar(d)"><i class="fas fa-edit"></i></button>
 										<button class="btn btn-sm btn-danger" @click="eliminar(d.id)"><i class="fas fa-trash"></i></button>
 										<button class="btn btn-sm btn-primary" @click="mostrarSedes(d)"><i class="fas fa-list"></i> Sedes</button>
+										<button class="btn btn-sm btn-primary" @click="mostrarT(d)"><i class="fas fa-list"></i> Trabajadores</button>
 									</td>
 								</tr>		
 							</tbody>
@@ -102,6 +103,7 @@
 	
 
 	<?php $this->renderPartial('_sedes'); ?>
+	<?php $this->renderPartial('_trabajadores'); ?>
 </div>
 
 <script>
@@ -121,6 +123,21 @@
 			errores: [],
 			
 			sedes: [],
+			sedeForm: false,
+			sede: {
+				id: '',				
+				empresa_id: '',
+				nombre: '',
+				direccion: '',
+				estado: 1,
+			},
+
+			empresa_id: '',
+			trabajadores: [],
+			tForm: false,
+			trabajador: {
+				id: '',
+			},
 
         }),
         methods: {
@@ -202,12 +219,21 @@
 				this.modal = false
 				this.errores = []
 			},
+			initDt(name) {
+				$(name).DataTable().destroy()
+				setTimeout(() => {
+					$(name).DataTable()
+				}, 200)
+			},
+
+
 			mostrarSedes(model) {
 				$('#modal-sedes').modal('show')
 				axios.get(`sede/listarSedes/${model.id}`)
 					.then(({data}) => {
-						this.sedes = data						
-						this.initDt('.tbl-dt-sede')						
+						this.sedes = data
+						this.sede.empresa_id = model.id
+						this.initDt('.tbl-dt-sede')
 					})
 					.catch((err) => {
 						console.log(err)
@@ -215,11 +241,74 @@
 					.finally(() => {
 					})
 			},
-			initDt(name) {
-				$(name).DataTable().destroy()
-				setTimeout(() => {
-					$(name).DataTable()
-				}, 200)
+			formSede() {
+				this.sedeForm = true
+			},
+			registrarSede() {
+				axios.post('sede/registrar', {model: this.sede})
+					.then(({data}) => {
+						this.mostrarSedes({ id: this.sede.empresa_id })
+						this.cancelarSede()
+					})
+					.catch((err) => {
+						this.errores = (err.response.status == 422) ? err.response.data.errores : []
+					})
+					.finally(() => {
+					})
+			},
+			cancelarSede() {
+				this.sede.id = ''
+				this.sede.nombre = ''
+				this.sede.direccion = ''
+				this.sede.estado = 1
+				this.sedeForm = false
+			},
+			sedeEliminar(id) {
+				if (confirm('¿Estas seguro de eliminar?')) {
+					axios.delete(`sede/eliminar/${id}`)
+					.then(({data}) => {
+						this.mostrarSedes({ id: this.sede.empresa_id })
+					})
+					.catch((err) => {
+						console.log(err)
+					})
+					.finally(() => {
+					})
+				}
+			},
+			sedeEditar(model) {
+				this.sede.id = model.id
+				this.sede.nombre = model.nombre
+				this.sede.direccion = model.direccion
+				this.sede.estado = model.estado
+				this.sedeForm = true
+			},
+			guardarSede() {
+				axios.post(`sede/actualizar/${this.sede.id}`, {model: this.sede})
+					.then(({data}) => {
+						this.mostrarSedes({ id: this.sede.empresa_id })
+						this.sedeForm = false
+					})
+					.catch((err) => {
+						this.errores = (err.response.status == 422) ? err.response.data.errores : []
+					})
+					.finally(() => {
+					})
+			},
+
+			mostrarT(model) {
+				$('#modal-tjs').modal('show')
+				axios.get(`trabajador/listarPorEmpresa/${model.id}`)
+					.then(({data}) => {
+						this.trabajadores = data
+						this.empresa_id = model.id
+						this.initDt('.tbl-dt-tjs')
+					})
+					.catch((err) => {
+						console.log(err)
+					})
+					.finally(() => {
+					})
 			},
         },
         watch: {

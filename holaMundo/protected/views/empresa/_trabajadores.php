@@ -1,15 +1,15 @@
 <!-- SEDES -->
-<div class="modal" id="modal-sedes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="modal-tjs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Lista de Sedes</h5>
-                <button class="btn-close" aria-label="Close" @click="cerrar('#modal-sedes')"></button>
+                <h5 class="modal-title" id="exampleModalLabel">Lista de Trabajadores</h5>
+                <button class="btn-close" aria-label="Close" @click="cerrar('#modal-tjs')"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div v-if="!sedeForm" class="col-lg-12 text-end">
-                        <button class="btn btn-sm btn-primary" @click="formSede">Nueva Sede</button>
+                        <button class="btn btn-sm btn-primary" @click="formSede">Nueva Trabajador</button>
                     </div>
                     <div v-if="sedeForm" class="col-lg-12 my-3">
                         <div class="row">
@@ -40,20 +40,24 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="table-responsive">
-                            <table class="table table-hover tbl-dt-sede">
+                            <table class="table table-hover tbl-dt-tjs">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>SEDE</th>
-                                        <th>DIRECCION</th>
+                                        <th>SEDE</th>                                        
+                                        <th>NOMBRE</th>
+                                        <th>CARGO</th>
+                                        <th>DOCUMENTO</th>
+                                        <th>ESTADO</th>
                                         <th>ACCIONES</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="d,i in sedes" :key="i">
-                                        <td>{{ d.id }}</td>
-                                        <td>{{ d.nombre }}</td>
-                                        <td>{{ d.direccion }}</td>
+                                    <tr v-for="d,i in trabajadores" :key="i">
+                                        <td>{{ d.sede_desc }}</td>
+                                        <td>{{ d.trb_nom }} {{ d.trb_ape }}</td>
+                                        <td>{{ d.cargo }}</td>
+                                        <td>{{ d.tipo_doc }}: {{ d.documento }}</td>
+                                        <td>{{ (d.estado == 1) ? 'ACTIVO':'INACTIVO' }}</td>
                                         <td class="text-center">
                                             <button class="btn btn-sm btn-primary" @click="sedeEditar(d)"><i class="fas fa-edit"></i></button>
                                             <button class="btn btn-sm btn-danger" @click="sedeEliminar(d.id)"><i class="fas fa-trash"></i></button>

@@ -12,6 +12,13 @@ class Empresa extends CActiveRecord
         return 'empresas';
     }
 
+    public function relations()
+    {
+        return array(
+            'sedes' => array(self::HAS_MANY, 'Sede', 'empresa_id'),
+        );
+    }
+
     public function attributeLabels()
     {
         return array(
