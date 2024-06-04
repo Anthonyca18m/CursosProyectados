@@ -9,34 +9,21 @@ class TrabajadorController extends Controller
         $empresa = Empresa::model()->findByPk($id); 
         if ($empresa === null) throw new CHttpException(404, 'La empresa no existe.');
         
-        $connect = Yii::app()->db;
-        $sql = "SELECT 
-                st.sede_id,
-                st.trabajador_id,
-                s.nombre as sede_desc,
-                t.nombres as trb_nom,
-                t.apellidos as trb_ape,
-                td.nombre as tipo_doc,
-                t.documento,
-                t.celular,
-                c.id as cargo_id,
-                c.nombre as cargo,
-                st.estado,
-                st.creado_el
-                FROM sedes_trabajadores st	
-                    INNER JOIN sedes s ON st.sede_id = s.id
-                    INNER JOIN trabajadores t ON st.trabajador_id = t.id
-                    INNER JOIN tipos_documentos td ON t.tipoDocumento_id = td.id
-                    INNER JOIN cargos c ON t.cargo_id = c.id 
-                    WHERE s.empresa_id IN (:empresa_id)
-        ";
-        $command = $connect->createCommand($sql);
-        $command->bindParam(":empresa_id", $id, PDO::PARAM_INT);
-        $response = $command->queryAll();
+        $connect = Yii::app()->db;      
+        $query = $connect->createCommand("CALL obtenerTrabajadoresPorEmpresa(:empresa_id)");
+        $query->bindParam(":empresa_id", $id, PDO::PARAM_INT);
+        $response = $query->queryAll();
 
         header('Content-Type: application/json');
         echo CJSON::encode($response);
         Yii::app()->end();
+    }
+
+    public function actionTest()
+    {
+        echo Yii::app()->Happy->hi();
+        Yii::app()->Happy->param1 = 'param1';
+        echo Yii::app()->Happy->hi();
     }
 
     // public function actionRegistrar()

@@ -35,6 +35,10 @@ return array(
 	// application components
 	'components'=>array(
 
+		'Happy' => array(
+			'class'=> 'ext.Happy',
+			// ''=> '',
+		),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
