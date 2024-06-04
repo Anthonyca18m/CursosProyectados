@@ -21,9 +21,20 @@ class TrabajadorController extends Controller
 
     public function actionTest()
     {
-        echo Yii::app()->Happy->hi();
-        Yii::app()->Happy->param1 = 'param1';
-        echo Yii::app()->Happy->hi();
+        // echo Yii::app()->Happy->hi();
+        // Yii::app()->Happy->param1 = 'param1';
+        // echo Yii::app()->Happy->hi();
+
+        echo Yii::app()->request->baseUrl .'<br>';
+        echo Yii::app()->request->requestUri .'<br>';
+        echo Yii::app()->request->pathInfo .'<br>';
+        echo Yii::app()->request->urlReferrer .'<br>';
+        echo Yii::app()->request->queryString .'<br>';
+
+        echo Yii::app()->request->getQuery('param1', 'DEFAULT_VALUE') .'<br>';
+        // echo Yii::app()->request->getPost('param1', 'DEFAULT_VALUE') .'<br>';
+        // echo Yii::app()->request->getParam('param1', 'DEFAULT_VALUE') .'<br>';
+        echo ($_GET['param1'] ?? 'DEFAULT_VALUE') .'<br>';
     }
 
     // public function actionRegistrar()
