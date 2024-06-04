@@ -25,16 +25,19 @@ class TrabajadorController extends Controller
         // Yii::app()->Happy->param1 = 'param1';
         // echo Yii::app()->Happy->hi();
 
-        echo Yii::app()->request->baseUrl .'<br>';
-        echo Yii::app()->request->requestUri .'<br>';
-        echo Yii::app()->request->pathInfo .'<br>';
-        echo Yii::app()->request->urlReferrer .'<br>';
-        echo Yii::app()->request->queryString .'<br>';
+        // echo Yii::app()->request->baseUrl .'<br>';
+        // echo Yii::app()->request->requestUri .'<br>';
+        // echo Yii::app()->request->pathInfo .'<br>';
+        // echo Yii::app()->request->urlReferrer .'<br>';
+        // echo Yii::app()->request->queryString .'<br>';
 
-        echo Yii::app()->request->getQuery('param1', 'DEFAULT_VALUE') .'<br>';
-        // echo Yii::app()->request->getPost('param1', 'DEFAULT_VALUE') .'<br>';
-        // echo Yii::app()->request->getParam('param1', 'DEFAULT_VALUE') .'<br>';
-        echo ($_GET['param1'] ?? 'DEFAULT_VALUE') .'<br>';
+        // echo Yii::app()->request->getQuery('param1', 'DEFAULT_VALUE') .'<br>';
+        // // echo Yii::app()->request->getPost('param1', 'DEFAULT_VALUE') .'<br>';
+        // // echo Yii::app()->request->getParam('param1', 'DEFAULT_VALUE') .'<br>';
+        // echo ($_GET['param1'] ?? 'DEFAULT_VALUE') .'<br>';
+
+        $content = $this->renderPartial('excel', array('model' => [0,1,2,3]), true);
+        Yii::app()->request->sendFile('nombre_archivo.xls', $content);
     }
 
     // public function actionRegistrar()
