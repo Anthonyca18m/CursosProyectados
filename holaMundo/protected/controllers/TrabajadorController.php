@@ -36,8 +36,16 @@ class TrabajadorController extends Controller
         // // echo Yii::app()->request->getParam('param1', 'DEFAULT_VALUE') .'<br>';
         // echo ($_GET['param1'] ?? 'DEFAULT_VALUE') .'<br>';
 
-        $content = $this->renderPartial('excel', array('model' => [0,1,2,3]), true);
-        Yii::app()->request->sendFile('nombre_archivo.xls', $content);
+        // $content = $this->renderPartial('excel', array('model' => [0,1,2,3]), true);
+        // Yii::app()->request->sendFile('nombre_archivo.xls', $content);
+
+        // echo Yii::app()->user->setState('MyvarSession', 'valor') .'<br>';
+        // echo Yii::app()->user->getState('MyvarSession') .'<br>';
+        // echo Yii::app()->user->hasState('MyvarSession') .'<br>';
+        
+
+        // Yii::app()->user->login(CUserIdentity, 60 /*segundos */);
+        // Yi::app()->user->logout();
     }
 
     // public function actionRegistrar()
