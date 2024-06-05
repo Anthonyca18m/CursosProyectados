@@ -22,7 +22,8 @@ class Sede extends CActiveRecord
     public function rules()
     {
         return array(
-            array('empresa_id, nombre, direccion, estado', 'required', 'message' => 'El campo es obligatorio.'),
+            // array('empresa_id, nombre, direccion, estado', 'required', 'message' => 'El campo es obligatorio.'),
+            array('empresa_id, nombre, direccion, estado', 'ext.MyValidator','param1'=> 0)
         );
     }
 }
