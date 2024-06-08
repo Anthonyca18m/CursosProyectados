@@ -1,3 +1,0 @@
-despues de declarar a un atributo o objeto como nulo, debemos por recomendación de certificación poner System.gc(); 
-que viene hacer un recolector de basura, para que limpie cuando crea conveniente el apache lo activa porque 
-consume recursos significativos
