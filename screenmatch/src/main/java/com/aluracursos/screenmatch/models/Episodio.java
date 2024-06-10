@@ -18,7 +18,7 @@ public class Episodio {
             this.evaluacion = Double.valueOf(d.evaluacion());
             this.fechaDeLanzamiento = LocalDate.parse(d.fechaLanzamiento());
         } catch (Exception e) {
-            this.evaluacion = null;
+            this.evaluacion = 0.0;
             this.fechaDeLanzamiento = null;
         }
         

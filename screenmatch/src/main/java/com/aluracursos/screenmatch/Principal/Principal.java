@@ -3,7 +3,10 @@ package com.aluracursos.screenmatch.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -91,6 +94,36 @@ public class Principal {
                 "Episodio: " + e.getEpisodio() +
                 "Fecha de lanzamiento: " + e.getFechaDeLanzamiento().format(dtf)
                 ));
+
+
+        System.out.println("Buscar episodio por titulo: ");
+        var buscarTitulo = teclado.next();
+
+        Optional<Episodio> find = episodios.stream()
+            .filter(e -> e.getTitulo().toUpperCase().contains(buscarTitulo.toUpperCase()))
+            .findFirst();
+        
+        if (find.isPresent()) {
+            System.out.println(find.toString());
+        } else {
+            System.out.println("No se encontró el episodio.");
+        }        
+
+
+        Map<Integer, Double> evaluacionPorTemporada = episodios.stream()     
+            .filter(e -> e.getEvaluacion() > 0.0)       
+            .collect(Collectors.groupingBy(Episodio::getTemporada, Collectors.averagingDouble(Episodio::getEvaluacion)));
+
+        System.out.println(evaluacionPorTemporada);
+
+        DoubleSummaryStatistics est = episodios.stream()
+            .filter(e -> e.getEvaluacion() > 0.0)
+            .collect(Collectors.summarizingDouble(Episodio::getEvaluacion));
+
+        System.out.println("Media de las evaluaciones: " + est.getAverage());
+        System.out.println("Episodio mejor evaluado: " + est.getMax());
+        System.out.println("Episodio peor evaluado: " + est.getMin());
+        
     }
 
 }
