@@ -4,9 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.aluracursos.screenmatch.models.DatosSerie;
-import com.aluracursos.screenmatch.service.ConsumoApi;
-import com.aluracursos.screenmatch.service.ConvierteDatos;
+import com.aluracursos.screenmatch.Principal.Principal;
 
 @SpringBootApplication
 public class ScreenmatchApplication implements CommandLineRunner {
@@ -17,18 +15,31 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		Principal principal = new Principal();
+		principal.muestraElMenu();
 		
-		var consumoApi = new ConsumoApi();
+		// var consumoApi = new ConsumoApi();		
 
-		var json = consumoApi.obtenerDatos("http://www.omdbapi.com/?i=tt3896198&apikey=c5a59910");
+		// var json = consumoApi.obtenerDatos("http://www.omdbapi.com/?t=game+of+thrones&apikey=c5a59910");
+		// ConvierteDatos conversor = new ConvierteDatos();		
+		// var datos  = conversor.obtenerDatos(json, DatosSerie.class);
+		// System.out.println(datos);
 
-		// System.out.println(json);
+		// var jsone = consumoApi.obtenerDatos("http://www.omdbapi.com/?t=game+of+thrones&Season=1&Episode=1&apikey=c5a59910");
+		// DatosEpisodio episodios  = conversor.obtenerDatos(jsone, DatosEpisodio.class);
+		// System.out.println(episodios);
 
-		ConvierteDatos conversor = new ConvierteDatos();
+		// List<DatosTemporada> temporadas = new ArrayList<>();
+		// for (int i = 1; i < datos.totalTemporadas(); i++) {
+		// 	json = consumoApi.obtenerDatos("http://www.omdbapi.com/?t=game+of+thrones&Season="+i+"&apikey=c5a59910");
+		// 	var datosTemporadas = conversor.obtenerDatos(json, DatosTemporada.class);
+		// 	temporadas.add(datosTemporadas);
+		// }
 
-		var datos  = conversor.obtenerDatos(json, DatosSerie.class);
+		// temporadas.forEach(System.out::println);
 
-		System.out.println(datos);
+		
 	}
 
 }
