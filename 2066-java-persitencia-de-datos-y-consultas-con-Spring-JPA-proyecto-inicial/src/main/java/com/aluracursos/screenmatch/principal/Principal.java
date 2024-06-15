@@ -1,19 +1,26 @@
 package com.aluracursos.screenmatch.principal;
 
-import com.aluracursos.screenmatch.model.DatosSerie;
-import com.aluracursos.screenmatch.model.DatosTemporadas;
-import com.aluracursos.screenmatch.service.ConsumoAPI;
-import com.aluracursos.screenmatch.service.ConvierteDatos;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import com.aluracursos.screenmatch.model.DatosSerie;
+import com.aluracursos.screenmatch.model.DatosTemporadas;
+import com.aluracursos.screenmatch.model.Serie;
+import com.aluracursos.screenmatch.service.ConsumoAPI;
+import com.aluracursos.screenmatch.service.ConvierteDatos;
 
 public class Principal {
+
     private Scanner teclado = new Scanner(System.in);
     private ConsumoAPI consumoApi = new ConsumoAPI();
     private final String URL_BASE = "https://www.omdbapi.com/?t=";
-    private final String API_KEY = "TU-APIKEY-OMDB";
+    private final String API_KEY = "&apikey=c5a59910";
     private ConvierteDatos conversor = new ConvierteDatos();
+
+    private List<DatosSerie> datosSeries = new ArrayList<>();
 
     public void muestraElMenu() {
         var opcion = -1;
@@ -30,17 +37,15 @@ public class Principal {
             teclado.nextLine();
 
             switch (opcion) {
-                case 1:
+                case 1 ->
                     buscarSerieWeb();
-                    break;
-                case 2:
+                case 2 ->
                     buscarEpisodioPorSerie();
-                    break;
-
-                case 0:
+                case 3 -> 
+                    mostrarSerieBuscadas();
+                case 0 ->
                     System.out.println("Cerrando la aplicación...");
-                    break;
-                default:
+                default ->
                     System.out.println("Opción inválida");
             }
         }
@@ -55,6 +60,7 @@ public class Principal {
         DatosSerie datos = conversor.obtenerDatos(json, DatosSerie.class);
         return datos;
     }
+
     private void buscarEpisodioPorSerie() {
         DatosSerie datosSerie = getDatosSerie();
         List<DatosTemporadas> temporadas = new ArrayList<>();
@@ -66,11 +72,24 @@ public class Principal {
         }
         temporadas.forEach(System.out::println);
     }
+
     private void buscarSerieWeb() {
         DatosSerie datos = getDatosSerie();
+        datosSeries.add(datos);
         System.out.println(datos);
     }
 
+    private void mostrarSerieBuscadas() {
+        // datosSeries.forEach(System.out::println);
+        List<Serie> series = new ArrayList<>();
+        
+        series = datosSeries.stream()
+            .map(d -> new Serie(d))
+            .collect(Collectors.toList());
+
+        series.stream()
+            .sorted(Comparator.comparing(Serie::getGenero))
+                .forEach(System.out::println);
+    }
 
 }
-
