@@ -3,15 +3,17 @@ package com.aluracursos.screenmatch.model;
 import java.util.List;
 import java.util.OptionalDouble;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "series")
@@ -37,7 +39,7 @@ public class Serie {
 
     private String sinopsis;
 
-    @Transient
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Episodio> episodios;
 
     public Serie(){}
@@ -116,11 +118,31 @@ public class Serie {
         this.sinopsis = sinopsis;
     }
 
+    public List<Episodio> getEpisodios() {
+        return episodios;
+    }
+
+    public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this));
+        this.episodios = episodios;
+    }
+
     @Override
     public String toString() {
-        return "Serie [titulo=" + titulo + ", totalTemporadas=" + totalTemporadas + ", evaluacion=" + evaluacion
-                + ", poster=" + poster + ", genero=" + genero + ", actores=" + actores + ", sinopsis=" + sinopsis + "]";
-    }   
+        StringBuilder sb = new StringBuilder();
+        sb.append("Serie{");
+        sb.append("id=").append(id);
+        sb.append(", titulo=").append(titulo);
+        sb.append(", totalTemporadas=").append(totalTemporadas);
+        sb.append(", evaluacion=").append(evaluacion);
+        sb.append(", poster=").append(poster);
+        sb.append(", genero=").append(genero);
+        sb.append(", actores=").append(actores);
+        sb.append(", sinopsis=").append(sinopsis);
+        sb.append(", episodios=").append(episodios);
+        sb.append('}');
+        return sb.toString();
+    }
 
     
 
