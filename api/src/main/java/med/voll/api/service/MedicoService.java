@@ -20,13 +20,19 @@ public class MedicoService {
         medicoRepository.save(new Medico(medico));
     }
 
-    // public List<MedicoDTO> obtenerMedicos(Pageable paginacion) {
-    //     return medicoRepository.findAll().stream().map(e -> new MedicoDTO(e.getNombre(), e.getDocumento(), e.getEspecialidad()))
-    //         .collect(Collectors.toList());
-    // }
-
     public Page<MedicoDTO> obtenerMedicos(Pageable paginacion) {
         Page<Medico> medicoPage = medicoRepository.findAll(paginacion);
-        return medicoPage.map(e -> new MedicoDTO(e.getNombre(), e.getDocumento(), e.getEspecialidad()));
+        return medicoPage.map(e -> new MedicoDTO(e.getId(), e.getNombre(), e.getDocumento(), e.getEspecialidad()));
+    }
+
+    public Medico actualizarMedico(Long id,RequestMedico request) {
+        Medico medico = medicoRepository.getReferenceById(id);
+        medico.actualizar(request);
+        return medico;
+    }
+
+    public void eliminarMedico(Long id) {
+        Medico medico = medicoRepository.getReferenceById(id);
+        medicoRepository.delete(medico);
     }
 }

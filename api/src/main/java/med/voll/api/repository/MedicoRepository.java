@@ -7,5 +7,4 @@ import med.voll.api.model.Medico;
 
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
-    // Page<Medico> findAll(Pageable pageable);
 }
