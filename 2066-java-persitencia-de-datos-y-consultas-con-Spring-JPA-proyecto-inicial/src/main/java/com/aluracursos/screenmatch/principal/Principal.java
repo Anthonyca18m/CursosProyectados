@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import com.aluracursos.screenmatch.model.Categoria;
 import com.aluracursos.screenmatch.model.DatosSerie;
 import com.aluracursos.screenmatch.model.DatosTemporadas;
 import com.aluracursos.screenmatch.model.Episodio;
@@ -39,6 +40,9 @@ public class Principal {
                     1 - Buscar series 
                     2 - Buscar episodios
                     3 - Mostrar series buscadas
+                    4 - Mostrar series por titulo
+                    5 - Top 5 de Series
+                    6 - Buscar series por categoria
                                   
                     0 - Salir
                     """;
@@ -53,6 +57,12 @@ public class Principal {
                     buscarEpisodioPorSerie();
                 case 3 ->
                     mostrarSerieBuscadas();
+                case 4 ->
+                    mostrarSeriePorTitulo();
+                case 5 -> 
+                    topSeries();
+                case 6 -> 
+                    buscarSeriesporCategoria();
                 case 0 ->
                     System.out.println("Cerrando la aplicación...");
                 default ->
@@ -113,6 +123,35 @@ public class Principal {
     private void mostrarSerieBuscadas() {
         series = serieRepository.findAll();
         System.out.println(series);
+    }
+
+    private void mostrarSeriePorTitulo() {
+        System.out.println("Esribe el nombre de la serie:");
+        var nombreSerie = teclado.nextLine();
+        Optional<Serie> seriebuscada = serieRepository.findByTituloContainsIgnoreCase(nombreSerie);
+        
+        if(seriebuscada.isPresent()) {
+            System.out.println("La serie buscada es: " + seriebuscada.get());
+        } else {
+            System.out.println("Serie no encontrada.");
+        }
+    }
+
+    private void topSeries() {
+        List<Serie> top = serieRepository.findTop5ByOrderByEvaluacionDesc();
+
+        top.stream().forEach(e -> System.out.println("Serie: " + e.getTitulo() + ", Evaluacion: " + e.getEvaluacion()));
+    }
+
+    private void buscarSeriesporCategoria() {
+        System.out.println("Esribe la categoria de las series:");
+        var genero = teclado.nextLine();
+        var categoria = Categoria.fromEspanol(genero);
+        List<Serie> seriesporCategoria = serieRepository.findByGenero(categoria);
+
+        // System.out.println("Las series de la categoria: " + genero);
+
+        seriesporCategoria.forEach(System.out::println);
     }
 
 }
