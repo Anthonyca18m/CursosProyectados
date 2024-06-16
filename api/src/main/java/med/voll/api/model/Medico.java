@@ -47,7 +47,7 @@ public class Medico {
     @Embedded
     private Direccion direccion;
 
-    public void actualizar(RequestMedico request) {
+    public Medico actualizar(RequestMedico request) {        
         if (request.nombre() != null) {
             this.nombre = request.nombre();            
         }
@@ -57,6 +57,7 @@ public class Medico {
         // if (request.direccion() != null) {
         //     this.direccion = direccion.actualizar(request.direccion());            
         // }
+        return this;
     }
 
 }

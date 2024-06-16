@@ -16,8 +16,14 @@ public class MedicoService {
     @Autowired
     private MedicoRepository medicoRepository;
 
-    public void registrarMedico(RequestMedico medico) {
-        medicoRepository.save(new Medico(medico));
+    public Medico registrarMedico(RequestMedico request) {
+        Medico medico = medicoRepository.save(new Medico(request));        
+        return medico;
+    }
+
+    public MedicoDTO obtenerMedico(Long id) {
+        Medico medico = medicoRepository.findById(id).get();
+        return new MedicoDTO(medico.getId(), medico.getNombre(), medico.getDocumento(), medico.getEspecialidad());
     }
 
     public Page<MedicoDTO> obtenerMedicos(Pageable paginacion) {
@@ -25,7 +31,7 @@ public class MedicoService {
         return medicoPage.map(e -> new MedicoDTO(e.getId(), e.getNombre(), e.getDocumento(), e.getEspecialidad()));
     }
 
-    public Medico actualizarMedico(Long id,RequestMedico request) {
+    public Medico actualizarMedico(Long id,RequestMedico request) {        
         Medico medico = medicoRepository.getReferenceById(id);
         medico.actualizar(request);
         return medico;
