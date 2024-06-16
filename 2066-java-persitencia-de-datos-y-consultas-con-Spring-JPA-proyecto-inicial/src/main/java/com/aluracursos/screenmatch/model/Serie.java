@@ -1,11 +1,27 @@
 package com.aluracursos.screenmatch.model;
 
+import java.util.List;
 import java.util.OptionalDouble;
 
-import com.aluracursos.screenmatch.service.ConsultaChatGPT;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
+@Entity
+@Table(name = "series")
 public class Serie {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+ 
+    @Column(name = "titulo", unique = true, nullable = false)
     private String titulo;
 
     private Integer totalTemporadas;
@@ -14,11 +30,17 @@ public class Serie {
 
     private String poster;
 
+    @Enumerated(EnumType.STRING)
     private Categoria genero;
 
     private String actores;
 
     private String sinopsis;
+
+    @Transient
+    private List<Episodio> episodios;
+
+    public Serie(){}
 
     public Serie(DatosSerie serie) {
         this.titulo = serie.titulo();
@@ -27,7 +49,15 @@ public class Serie {
         this.poster = serie.poster();
         this.genero = Categoria.fromString(serie.genero().split(",")[0].trim());
         this.actores = serie.actores();
-        this.sinopsis = ConsultaChatGPT.obtenerTraduccion(serie.sinopsis());
+        this.sinopsis = serie.sinopsis();//ConsultaChatGPT.obtenerTraduccion(serie.sinopsis());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -91,6 +121,8 @@ public class Serie {
         return "Serie [titulo=" + titulo + ", totalTemporadas=" + totalTemporadas + ", evaluacion=" + evaluacion
                 + ", poster=" + poster + ", genero=" + genero + ", actores=" + actores + ", sinopsis=" + sinopsis + "]";
     }   
+
+    
 
     
 

@@ -1,14 +1,13 @@
 package com.aluracursos.screenmatch.principal;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import com.aluracursos.screenmatch.model.DatosSerie;
 import com.aluracursos.screenmatch.model.DatosTemporadas;
 import com.aluracursos.screenmatch.model.Serie;
+import com.aluracursos.screenmatch.repository.SerieRepository;
 import com.aluracursos.screenmatch.service.ConsumoAPI;
 import com.aluracursos.screenmatch.service.ConvierteDatos;
 
@@ -21,6 +20,12 @@ public class Principal {
     private ConvierteDatos conversor = new ConvierteDatos();
 
     private List<DatosSerie> datosSeries = new ArrayList<>();
+
+    private SerieRepository serieRepository;
+
+    public Principal(SerieRepository serierepository) {
+        this.serieRepository = serierepository;
+    }
 
     public void muestraElMenu() {
         var opcion = -1;
@@ -41,7 +46,7 @@ public class Principal {
                     buscarSerieWeb();
                 case 2 ->
                     buscarEpisodioPorSerie();
-                case 3 -> 
+                case 3 ->
                     mostrarSerieBuscadas();
                 case 0 ->
                     System.out.println("Cerrando la aplicación...");
@@ -75,21 +80,15 @@ public class Principal {
 
     private void buscarSerieWeb() {
         DatosSerie datos = getDatosSerie();
-        datosSeries.add(datos);
+        // datosSeries.add(datos);
+        Serie serie = new Serie(datos);
+        serieRepository.save(serie);
         System.out.println(datos);
     }
 
     private void mostrarSerieBuscadas() {
-        // datosSeries.forEach(System.out::println);
-        List<Serie> series = new ArrayList<>();
-        
-        series = datosSeries.stream()
-            .map(d -> new Serie(d))
-            .collect(Collectors.toList());
-
-        series.stream()
-            .sorted(Comparator.comparing(Serie::getGenero))
-                .forEach(System.out::println);
+        List<Serie> series = serieRepository.findAll();
+        System.out.println(series);
     }
 
 }
