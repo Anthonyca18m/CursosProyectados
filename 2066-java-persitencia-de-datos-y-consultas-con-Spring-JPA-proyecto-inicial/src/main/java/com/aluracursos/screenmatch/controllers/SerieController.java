@@ -1,33 +1,42 @@
 package com.aluracursos.screenmatch.controllers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aluracursos.screenmatch.dto.SerieDTO;
-import com.aluracursos.screenmatch.repository.SerieRepository;
+import com.aluracursos.screenmatch.service.SerieService;
+
 
 @RestController
+@RequestMapping("/series")
 public class SerieController {
 
     @Autowired
-    private SerieRepository serieRepository;
+    private SerieService serieService;
 
-    @GetMapping(path = "/series")
+    @GetMapping(path = "")
     public List<SerieDTO> obtenerSeries() {
-        return serieRepository.findAll().stream()
-            .map(e -> new SerieDTO(
-                e.getTitulo(), 
-                e.getTotalTemporadas(), 
-                e.getEvaluacion(), 
-                e.getPoster(), 
-                e.getGenero(), 
-                e.getActores(), 
-                e.getSinopsis()))
-            .collect(Collectors.toList());
+        return serieService.obtenerSeries();
+    }
+    
+    @GetMapping("/top5")
+    public List<SerieDTO> obtenerTop5() {
+        return serieService.obtenerTop5();
     }
 
+    @GetMapping("/lanzamientos")
+    public List<SerieDTO> obtenerLanzamientosRecientes() {
+        return serieService.obtenerLanzamientosmasRecientes();
+    }
+
+    @GetMapping("/{id}")
+    public SerieDTO obtenerSerie(@PathVariable Long id) {
+        return serieService.obtenerSerie(id);
+    }
+    
 }
