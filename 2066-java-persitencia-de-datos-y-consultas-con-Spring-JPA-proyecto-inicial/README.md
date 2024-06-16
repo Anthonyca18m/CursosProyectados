@@ -17,12 +17,12 @@ Proyecto desarrollado durante el segundo curso de la formación Avanzando con Ja
 
 ## Lo que aprendimos en esta aula:
 
-* Crear consultas derivadas con JPA. Conocimos el recurso estándar de JPA para realizar búsquedas utilizando palabras clave en los métodos de la clase Repository.
+* Devolver los datos de nuestra base a la navegadora. Trabajamos devolviendo los datos de nuestra base en el Controller, debidamente serializados.
 
-* Comparar streams y búsquedas en la base de datos. Observamos los cambios al usar streams y las derived queries en nuestra aplicación.
+* Tratar la serialización circular. Vimos los problemas que ocurren al intentar serializar entidades mapeadas de forma bidireccional y cómo resolverlos.
 
-* Conocer diversas palabras clave para crear sus métodos. Profundizamos en las palabras clave y en cómo usarlas, reforzando la práctica.
+* Utilizar el patrón DTO. Para evitar la serialización circular y principalmente para seguir buenas prácticas, creamos nuestros DTOs. Así, nuestros datos se volvieron más seguros y fueron devueltos de forma personalizada.
 
-* Discutir los varios tipos de retorno al realizar las búsquedas. Conversamos sobre las diferencias entre devolver una serie, una lista de series o un Optional de series.
+* Lidiar con el error de CORS. Conocimos el error entre la comunicación entre rutas de orígenes diferentes y pudimos tratarlo, creando la clase CorsConfiguration.
 
-* Leer datos dinámicamente y almacenar en un Enum. Vimos cómo hacer coincidir lo que se está escribiendo con un campo en el enum.
+* Configurar el Live Reload. Para que la aplicación no necesite ser detenida y reiniciada siempre que haya cambios, usamos el Devtools y cambiamos las configuraciones necesarias en Intellij.
