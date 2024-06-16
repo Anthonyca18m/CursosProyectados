@@ -17,12 +17,10 @@ Proyecto desarrollado durante el segundo curso de la formación Avanzando con Ja
 
 ## Lo que aprendimos en esta aula:
 
-* Devolver los datos de nuestra base a la navegadora. Trabajamos devolviendo los datos de nuestra base en el Controller, debidamente serializados.
+* Trabajar de forma colaborativa. Vimos que es importante siempre probar exhaustivamente el código, más aún con registros diferentes. Solo así tenemos la confirmación de que nuestras búsquedas están correctas.
 
-* Tratar la serialización circular. Vimos los problemas que ocurren al intentar serializar entidades mapeadas de forma bidireccional y cómo resolverlos.
+* Pasar parámetros en la url. Usamos nuevamente la anotación @PathVariable y vimos que puede ser utilizada tanto con números como con cadenas. Para que funcione, basta con que pasemos el nombre del parámetro entre llaves en la url del @GetMapping, exactamente como está declarado en la función.
 
-* Utilizar el patrón DTO. Para evitar la serialización circular y principalmente para seguir buenas prácticas, creamos nuestros DTOs. Así, nuestros datos se volvieron más seguros y fueron devueltos de forma personalizada.
+* Comparar streams y búsquedas en la base de datos. Aprendimos que podemos utilizar tanto streams como consultas de la base de datos, no necesitamos restringirnos al uso exclusivo de uno de ellos. Basta con que analicemos la complejidad de las búsquedas, filtros y operaciones que haremos.
 
-* Lidiar con el error de CORS. Conocimos el error entre la comunicación entre rutas de orígenes diferentes y pudimos tratarlo, creando la clase CorsConfiguration.
-
-* Configurar el Live Reload. Para que la aplicación no necesite ser detenida y reiniciada siempre que haya cambios, usamos el Devtools y cambiamos las configuraciones necesarias en Intellij.
+* Desarrollar una aplicación de forma incremental. Al trabajar en la integración del front con el back-end, identificamos, a lo largo del tiempo, los requisitos necesarios para que todo funcione en conjunto. El trabajo incremental es muy común en el ambiente de desarrollo.
