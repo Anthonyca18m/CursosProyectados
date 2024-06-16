@@ -43,6 +43,9 @@ public class Principal {
                     4 - Mostrar series por titulo
                     5 - Top 5 de Series
                     6 - Buscar series por categoria
+                    7 - filtrarSeriesPorTemporadaYEvaliacion
+                    8 - Buscar episodios por titulo
+                    9 - Top 5 de episodios por serie
                                   
                     0 - Salir
                     """;
@@ -63,6 +66,12 @@ public class Principal {
                     topSeries();
                 case 6 -> 
                     buscarSeriesporCategoria();
+                case 7 -> 
+                    filtrarSeriesPorTemporadaYEvaliacion();
+                case 8 ->
+                    buscarEpisodioPorNombre();
+                case 9 -> 
+                    top5EpisodiosPorSerie();
                 case 0 ->
                     System.out.println("Cerrando la aplicación...");
                 default ->
@@ -152,6 +161,43 @@ public class Principal {
         // System.out.println("Las series de la categoria: " + genero);
 
         seriesporCategoria.forEach(System.out::println);
+    }
+
+    private void filtrarSeriesPorTemporadaYEvaliacion() {
+        System.out.println("¿Filtrar series con cuantas temporadas?");
+        var temps = teclado.nextInt();
+        teclado.nextLine();
+        System.out.println("a partir de cuanto de evaluacion: ");
+        var evaluacion = teclado.nextDouble();
+        teclado.nextLine();
+
+        List<Serie> filtroSeries = serieRepository.seriesPorTemporadayEvaluacion(temps, evaluacion);
+
+        System.out.println("*** Series filtradas ***");
+        filtroSeries.forEach(e -> System.out.println(e.getTitulo() + " - evaluacion: " + e.getEvaluacion()));
+    }
+
+    private void buscarEpisodioPorNombre() {
+        System.out.println("¿cual es el nombre del episodio?");
+        var nombre = teclado.nextLine();
+        List<Episodio> episodiosEncontrados = serieRepository.episodiosPorNombre(nombre);
+
+        System.out.println("*** Episodios filtradas ***");
+        episodiosEncontrados.forEach(e -> System.out.println(e.getTitulo() + " - evaluacion: " + e.getEvaluacion()));
+    }
+
+    private void top5EpisodiosPorSerie() {
+        System.out.println("¿cual es el nombre de la serie?");
+        var nombre = teclado.nextLine();
+        Optional<Serie> seriebuscada = serieRepository.findByTituloContainsIgnoreCase(nombre);      
+
+        if(seriebuscada.isPresent()) {
+            List<Episodio> episodiosEncontrados = serieRepository.top5Episodios(seriebuscada.get());
+            System.out.println("*** Episodios TOP ***");
+            episodiosEncontrados.forEach(e -> System.out.println(e.getTitulo() + " - evaluacion: " + e.getEvaluacion()));
+        } else {
+            System.out.println("Serie no encontrada.");
+        }
     }
 
 }
