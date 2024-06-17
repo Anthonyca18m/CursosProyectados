@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 
 import med.voll.api.model.Usuario;
 
@@ -17,22 +18,36 @@ import med.voll.api.model.Usuario;
 @Service
 public class TokenService {
 
+    private String secret = "ESTO-DEBE-SER-UN-SECRET";
+
     public String generarToken(Usuario usuario) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256("ESTO-DEBE-SER-VARIABLE-DE-ENTORNO-ORRAI");
-
-            return JWT.create().withIssuer("vell med")
-                .withSubject(usuario.getUsername())
-                .withClaim("id", usuario.getId())
-                .withExpiresAt(expiracionSesion())
-                .sign(algorithm);
-            
-        } catch (JWTCreationException exception) {
-            throw new RuntimeException(exception);
+            var algoritmo = Algorithm.HMAC256(secret);
+            return JWT.create()
+                    .withIssuer("API Voll.med")
+                    .withSubject(usuario.getUsername())
+                    .withExpiresAt(fechaExpiracion())
+                    .sign(algoritmo);
+        } catch (JWTCreationException exception){
+            throw new RuntimeException("error al generar token jwt", exception);
         }
     }
 
-    private Instant expiracionSesion() {
-        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-05:00"));
+    public String getSubject(String tokenJWT) {
+        try {
+            var algoritmo = Algorithm.HMAC256(secret);
+            return JWT.require(algoritmo)
+                    .withIssuer("API Voll.med")
+                    .build()
+                    .verify(tokenJWT)
+                    .getSubject();
+        } catch (JWTVerificationException exception) {
+            throw new RuntimeException("Token JWT inválido o expirado!");
+        }
     }
+
+    private Instant fechaExpiracion() {
+        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
+    }
+
 }
