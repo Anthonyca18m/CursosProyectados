@@ -5,6 +5,7 @@ import './App.css'
 import Card from './componentes/Card'
 import Count from './componentes/Count'
 import ToggleButton from './componentes/ToggleButton'
+import NameForm from './componentes/NameForm'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <div className="card">
         <Count />
         <ToggleButton />
+        <NameForm />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
