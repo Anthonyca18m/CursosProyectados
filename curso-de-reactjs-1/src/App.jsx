@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Card from './componentes/Card'
 import Count from './componentes/Count'
+import CountWithEffect from './componentes/CountWithEffect'
 import ToggleButton from './componentes/ToggleButton'
 import NameForm from './componentes/NameForm'
 
@@ -22,6 +23,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <Count />
+        <CountWithEffect />
         <ToggleButton />
         <NameForm />
         <p>
