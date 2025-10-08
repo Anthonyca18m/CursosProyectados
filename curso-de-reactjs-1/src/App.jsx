@@ -7,6 +7,7 @@ import Count from './componentes/Count'
 import CountWithEffect from './componentes/CountWithEffect'
 import ToggleButton from './componentes/ToggleButton'
 import NameForm from './componentes/NameForm'
+import Button from './componentes/Button'
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+        <Button>oli</Button>
+        <Button blue={'blue'}>oli</Button>
         <Count />
         <CountWithEffect />
         <ToggleButton />
