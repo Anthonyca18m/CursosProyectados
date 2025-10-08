@@ -1,13 +1,6 @@
-
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 import Card from './componentes/Card'
-import Count from './componentes/Count'
-import CountWithEffect from './componentes/CountWithEffect'
-import ToggleButton from './componentes/ToggleButton'
-import NameForm from './componentes/NameForm'
-import Button from './componentes/Button'
 
 function App() {
   return (
@@ -22,20 +15,9 @@ function App() {
         <Card titulo={"oli"} descripcion={"descripcion"}></Card>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        <Button>oli</Button>
-        <Button blue={'blue'}>oli</Button>
-        <Count />
-        <CountWithEffect />
-        <ToggleButton />
-        <NameForm />
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
     </>
   )
 }
