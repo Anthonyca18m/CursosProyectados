@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Card from './componentes/Card'
 import Count from './componentes/Count'
+import ToggleButton from './componentes/ToggleButton'
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <Count></Count>
+        <Count />
+        <ToggleButton />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
