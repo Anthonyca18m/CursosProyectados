@@ -1,7 +1,9 @@
+import styles from './Card.module.scss'
+
 const Card = ({ titulo, descripcion, imagen }) => {
 
     return (
-        <div className="card">
+        <div className={styles.card}>
             <img src={imagen} alt={titulo} className="card-img-top" />
             <div className="card-body">
                 <h5 className="card-title">{titulo}</h5>
