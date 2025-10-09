@@ -1,4 +1,5 @@
 import { createContext, useState, useContext  } from 'react';
+import CounterWithCustomHook from './componentes/CounterWithCustomHook/CounterWithCustomHook';
 
 const ThemeContext = createContext();
 
@@ -38,10 +39,11 @@ function App() {
     <>
       <ThemeProvider>
         <div className="App">
-          <ThemeButton />
+          <ThemeButton />          
           {/* Otros componentes */}
         </div>
       </ThemeProvider>
+      <CounterWithCustomHook />
     </>
   )
 }
