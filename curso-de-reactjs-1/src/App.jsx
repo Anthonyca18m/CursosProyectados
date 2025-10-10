@@ -1,5 +1,6 @@
 import { createContext, useState, useContext  } from 'react';
 import CounterWithCustomHook from './componentes/CounterWithCustomHook/CounterWithCustomHook';
+import CounterWithReactMemo from './componentes/CounterWithReactMemo/CounterWithReactMemo';
 
 const ThemeContext = createContext();
 
@@ -44,6 +45,7 @@ function App() {
         </div>
       </ThemeProvider>
       <CounterWithCustomHook />
+      <CounterWithReactMemo />
     </>
   )
 }
