@@ -1,6 +1,7 @@
 import { createContext, useState, useContext  } from 'react';
 import CounterWithCustomHook from './componentes/CounterWithCustomHook/CounterWithCustomHook';
 import CounterWithReactMemo from './componentes/CounterWithReactMemo/CounterWithReactMemo';
+import ButtonTs from './componentes/ButtonTs';
 
 const ThemeContext = createContext();
 
@@ -46,6 +47,7 @@ function App() {
       </ThemeProvider>
       <CounterWithCustomHook />
       <CounterWithReactMemo />
+      <ButtonTs onclick={() => console.log('dddd')} label={'true'} />
     </>
   )
 }
