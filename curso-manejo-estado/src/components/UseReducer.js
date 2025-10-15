@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, Fragment } from 'react'
 
 const SECURITY_CODE = 'paradigma'
+
 const initialState = {
 	value: '',
 	loading: false,
@@ -9,38 +10,47 @@ const initialState = {
 	confirmed: false,
 }
 
+const actionTypes = {
+	error: 'Error',
+	confirm: 'Confirm',
+	write: 'Write',
+	check: 'Check',
+	delete: 'Delete',
+	reset: 'Reset',
+}
+
 const reducer = (state, action) => {
 	switch (action.type) {
-		case 'Error':
+		case actionTypes.error :
 			return {
 				...state,
 				error: true,
 				loading: false,
 			}
-		case 'Confirm':
+		case actionTypes.confirm :
 			return {
 				...state,
 				loading: false,
 				error: false,
 				confirmed: true,
 			}
-		case 'Write':
+		case actionTypes.write :
 			return {
 				...state,
 				value: action.payload,
 			}
-		case 'Check':
+		case actionTypes.check :
 			return {
 				...state,
 				loading: true,
 				error: false,
 			}
-		case 'Delete':
+		case actionTypes.delete :
 			return {
 				...state,
 				deleted: true,
 			}
-		case 'Reset':
+		case actionTypes.reset :
 			return {
 				...state,
 				value: '',
@@ -62,9 +72,9 @@ export default function UseReducer() {
 			if (state.loading) {
 				setTimeout(() => {
 					if (state.value === SECURITY_CODE) {
-						dispatch({ type: 'Confirm' })
+						dispatch({ type: actionTypes.confirm })
 					} else {
-						dispatch({ type: 'Error' })
+						dispatch({ type: actionTypes.error })
 					}
 				}, 1000)
 			}
@@ -83,30 +93,24 @@ export default function UseReducer() {
 					type='text'
 					placeholder='código de seguridad'
 					value={state.value}
-					onChange={ev => dispatch({ type: 'Write', payload: ev.target.value })}
+					onChange={ev => dispatch({ type: actionTypes.write, payload: ev.target.value })}
 				/>
-				<button
-					onClick={() => {
-						dispatch({ type: 'Check' })
-					}}
-				>
-					Comprobar
-				</button>
+				<button onClick={() => dispatch({ type: actionTypes.check })}>Comprobar</button>
 			</div>
 		)
 	} else if (!state.deleted && state.confirmed) {
 		return (
 			<Fragment>
 				<p>Pedimos confirmación. ¿Tas seguro?</p>
-				<button onClick={() => dispatch({ type: 'Delete' })}>Si, eliminar</button>
-				<button onClick={() => dispatch({ type: 'Reset' })}>No, me arrepentí</button>
+				<button onClick={() => dispatch({ type: actionTypes.delete })}>Si, eliminar</button>
+				<button onClick={() => dispatch({ type: actionTypes.reset })}>No, me arrepentí</button>
 			</Fragment>
 		)
 	} else {
 		return (
 			<Fragment>
 				<p>Eliminado con éxito</p>
-				<button onClick={() => dispatch({ type: 'Reset' })}>Regresar</button>
+				<button onClick={() => dispatch({ type: actionTypes.reset })}>Regresar</button>
 			</Fragment>
 		)
 	}
