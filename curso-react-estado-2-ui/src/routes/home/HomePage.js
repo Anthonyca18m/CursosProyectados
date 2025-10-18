@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useTodos } from '../useTodos';
 import { TodoHeader } from '../../ui/TodoHeader';
@@ -16,6 +16,8 @@ import { ChangeAlert } from '../../ui/ChangeAlert';
 
 function HomePage() {
   const { state, stateUpdaters } = useTodos();
+
+  const [params, setParams] = useSearchParams();
 
   const navigate = useNavigate()
 
@@ -45,6 +47,8 @@ function HomePage() {
         <TodoSearch
           searchValue={searchValue}
           setSearchValue={setSearchValue}
+          params={params}
+          setParams={setParams}
         />
       </TodoHeader>
 
