@@ -8,7 +8,7 @@ function useTodos() {
     sincronizeItem: sincronizeTodos,
     loading,
     error,
-  } = useLocalStorage('TODOS_V2', []);
+  } = useLocalStorage('TODOS_V3', []);
   const [searchValue, setSearchValue] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false);
 
@@ -44,6 +44,13 @@ function useTodos() {
     saveTodos(newTodos);
   };
 
+  const editTodo = (editData) => {
+    const todoIndex = todos.findIndex(todo => todo.id === editData.id);
+    const newTodos = [...todos];
+    newTodos[todoIndex] = editData;
+    saveTodos(newTodos);
+  }
+
   const completeTodo = (id) => {
     const todoIndex = todos.findIndex(todo => todo.id === id);
     const newTodos = [...todos];
@@ -71,6 +78,7 @@ function useTodos() {
   const stateUpdaters = {
     setSearchValue,
     addTodo,
+    editTodo,
     completeTodo,
     deleteTodo,
     setOpenModal,

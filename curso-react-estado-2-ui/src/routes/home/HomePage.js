@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { useTodos } from '../useTodos';
 import { TodoHeader } from '../../ui/TodoHeader';
 import { TodoCounter } from '../../ui/TodoCounter';
@@ -8,28 +10,25 @@ import { TodoItem } from '../../ui/TodoItem';
 import { TodosError } from '../../ui/TodosError';
 import { TodosLoading } from '../../ui/TodosLoading';
 import { EmptyTodos } from '../../ui/EmptyTodos';
-import { TodoForm } from '../../ui/TodoForm';
 import { CreateTodoButton } from '../../ui/CreateTodoButton';
-import { Modal } from '../../ui/Modal';
 import { ChangeAlert } from '../../ui/ChangeAlert';
+
 
 function HomePage() {
   const { state, stateUpdaters } = useTodos();
+
+  const navigate = useNavigate()
 
   const {
     error,
     loading,
     searchedTodos,
     totalTodos,
-    
     completedTodos,
-    openModal,
     searchValue,
   } = state;
 
   const {
-    setOpenModal,
-    addTodo,
     completeTodo,
     deleteTodo,
     setSearchValue,
@@ -68,22 +67,24 @@ function HomePage() {
             text={todo.text}
             completed={todo.completed}
             onComplete={() => completeTodo(todo.id)}
+            onEdit={() => navigate(`/edit/${todo.id}`)}
             onDelete={() => deleteTodo(todo.id)}
           />
         )}
       </TodoList>
 
-      {!!openModal && (
+      {/* {!!openModal && (
         <Modal>
           <TodoForm
             addTodo={addTodo}
             setOpenModal={setOpenModal}
           />
         </Modal>
-      )}
+      )} */}
 
       <CreateTodoButton
-        setOpenModal={setOpenModal}
+        // setOpenModal={setOpenModal}
+        onClick={() => navigate('/new')}
       />
 
       <ChangeAlert
