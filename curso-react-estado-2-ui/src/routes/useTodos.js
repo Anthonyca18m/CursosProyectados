@@ -35,20 +35,24 @@ function useTodos() {
 
   const addTodo = (text) => {
     const id = newTodoId(todos)
-    const newTodos = [...todos];
-    newTodos.push({
-      completed: false,
-      text,
+    const newTodo = {
       id,
-    });
-    saveTodos(newTodos);
+      text,
+      completed: false,
+    };
+    saveTodos([...todos, newTodo]);    
   };
 
-  const editTodo = (editData) => {
-    const todoIndex = todos.findIndex(todo => todo.id === editData.id);
+  const editTodo = (id, newText) => {
+    const todoIndex = todos.findIndex(todo => todo.id === id);
     const newTodos = [...todos];
-    newTodos[todoIndex] = editData;
+    newTodos[todoIndex].text = newText;
     saveTodos(newTodos);
+  }
+
+  const getEditTodo = (id) => {
+    const todoIndex = todos.findIndex(todo => todo.id === id);
+    return todos[todoIndex];
   }
 
   const completeTodo = (id) => {
@@ -79,6 +83,7 @@ function useTodos() {
     setSearchValue,
     addTodo,
     editTodo,
+    getEditTodo,
     completeTodo,
     deleteTodo,
     setOpenModal,
