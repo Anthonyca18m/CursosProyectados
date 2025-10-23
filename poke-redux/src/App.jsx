@@ -37,6 +37,11 @@ function App() {
           (<Spin spinning size='large' style={styleSpin}></Spin>) : 
           (<PokemonList pokemons={pokemons} /> )
         }
+        {
+          !loading && pokemons.length === 0 && (
+            <div>No se encontraron pokemones</div>
+          )
+        }
       </Col>
     </>
   )
