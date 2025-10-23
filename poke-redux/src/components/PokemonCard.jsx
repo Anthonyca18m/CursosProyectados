@@ -8,7 +8,7 @@ const PokemonCard = ({ pokemon }) => {
 
     const dispatch = useDispatch()
 
-    const favorites = useSelector(state => state.favorites);
+    const favorites = useSelector(state => state.data.favorites);
     const abilities = pokemon.abilities.map((ability) => ability.ability.name).join(', ');
 
     const isFavorite = favorites.includes(pokemon);

@@ -10,9 +10,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
 
 function App() {
-
-  const pokemons = useSelector(state => state.pokemons)
-  const loading = useSelector(state => state.loading)
+  const pokemons = useSelector(state => state.data.pokemons)
+  const loading = useSelector(state => state.data.loading)
   const dispatch = useDispatch()
 
   useEffect(() => {
