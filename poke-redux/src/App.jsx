@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-
 import Search from 'antd/es/transfer/search'
 import PokemonList from './components/PokemonList'
 import { Col } from 'antd'
-import './App.css'
 
 import { getPokemons } from './api'
-import { setPokemons as setPokemonsAction } from './actions'
+import { setPokemons } from './actions'
+import { useDispatch, useSelector } from 'react-redux'
 
-function App({ pokemons, setPokemons }) {
+import './App.css'
+
+function App() {
+
+  const pokemons = useSelector(state => state.pokemons)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchPokemons = async () => {
       const data = await getPokemons()
-      setPokemons(data)
+      dispatch(setPokemons(data))
     }
 
     fetchPokemons()
@@ -30,14 +33,5 @@ function App({ pokemons, setPokemons }) {
   )
 }
 
-const mapStateToProps = (state) => ({
-  pokemons: state.pokemons  
-})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setPokemons: (value) => dispatch(setPokemonsAction(value))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
