@@ -4,7 +4,7 @@ import PokemonList from './components/PokemonList'
 import { Col } from 'antd'
 
 import { getPokemons } from './api'
-import { setPokemons } from './actions'
+import { getPokemonWithDetail } from './actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 import './App.css'
@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const fetchPokemons = async () => {
       const data = await getPokemons()
-      dispatch(setPokemons(data))
+      dispatch(getPokemonWithDetail(data))
     }
 
     fetchPokemons()
