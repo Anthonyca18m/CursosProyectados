@@ -2,7 +2,8 @@ import { Card } from 'antd'
 import Meta from 'antd/es/card/Meta'
 import StartButton from './StartButton';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleFavorite } from '../actions';
+// import { toggleFavorite } from '../actions';
+import { setFavorite } from '../slices/dataSlice';
 
 const PokemonCard = ({ pokemon }) => {
 
@@ -14,7 +15,7 @@ const PokemonCard = ({ pokemon }) => {
     const isFavorite = favorites.includes(pokemon);
 
     const handleOnFavorite = () => {
-        dispatch(toggleFavorite(pokemon));
+        dispatch(setFavorite(pokemon));
     }
 
     return (
