@@ -1,8 +1,9 @@
-import { SET_LOADING, SET_POKEMONS } from "../actions/types"
+import { SET_LOADING, SET_POKEMONS, TOGGLE_FAVORITE } from "../actions/types"
 
 const initialState = {
     pokemons: [],
     loading: false,
+    favorites: [],
 }
 
 export const pokemonsReducer = (state = initialState, action) => {
@@ -16,6 +17,16 @@ export const pokemonsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: action.payload,
+            }
+        }
+        case TOGGLE_FAVORITE: {
+            const { payload } = action
+            const isFavorite = state.favorites.includes(payload)
+            return {
+                ...state,
+                favorites: isFavorite
+                    ? state.favorites.filter((name) => name !== payload)
+                    : [...state.favorites, payload],
             }
         }
         default:
