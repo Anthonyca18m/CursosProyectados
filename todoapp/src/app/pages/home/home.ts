@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 
+import { Task } from '../../models/task.model';
+
 @Component({
   selector: 'app-home',
   imports: [],
@@ -8,22 +10,25 @@ import { Component, signal } from '@angular/core';
 })
 export class Home {
 
-    tasks = signal<string[]>([
-        'Tarea 1',
-        'Tarea 2',
-        'Tarea 3',
-        'Tarea 4',
-        'Tarea 5',
-    ]);
+    tasks = signal<Task[]>([]);
 
     addTask(event: Event) {
         const inputElement = event.target as HTMLInputElement;
-        const newTask = inputElement.value.trim();
+        const newTitleTask = inputElement.value.trim();
 
-        if (this.tasks().includes(newTask)) return;
+        if (this.tasks().some(task => task.title === newTitleTask)) return;
 
-        if (newTask) {
-            this.tasks.update(currentTasks => [...currentTasks, newTask]);
+        if (newTitleTask) {
+
+            const newTask: Task = {
+                id: Date.now(),
+                title: newTitleTask,
+                completed: false
+            };
+
+            this.tasks.update(currentTasks => [
+                ...currentTasks, newTask
+            ]);
             inputElement.value = '';
         }
     }
@@ -34,4 +39,11 @@ export class Home {
         );
     }
 
+    toggleTaskCompletion(index: number) {
+        this.tasks.update(currentTasks =>
+            currentTasks.map((task, i) =>
+                i === index ? { ...task, completed: !task.completed } : task
+            )
+        );
+    }
 }

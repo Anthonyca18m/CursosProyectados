@@ -10,22 +10,14 @@
         <!-- This section should be hidden by default and shown when there are todos -->
         <section class="main">
             <ul class="todo-list">
-                <!-- <li class="completed">
-                    <div class="view">
-                        <input class="toggle" type="checkbox" checked />
-                        <label>Learn JavaScript</label>
-                        <button class="destroy"></button>
-                    </div>
-                    <input class="edit" value="Learn JavaScript" />
-                </li> -->
                 @for (item of tasks(); track $index) {
-                    <li>
+                    <li [class.completed]="item.completed">
                         <div class="view">
-                            <input class="toggle" type="checkbox" />
-                            <label>{{ item }}</label>
+                            <input class="toggle" type="checkbox" [checked]="item.completed" (change)="toggleTaskCompletion($index)" />
+                            <label>{{ item.title }}</label>
                             <button class="destroy" (click)="removeTask($index)"></button>
                         </div>
-                        <input class="edit" value="{{ item }}" />
+                        <input class="edit" value="{{ item.title }}" />
                     </li>
                 }
                 <li class="editing">
