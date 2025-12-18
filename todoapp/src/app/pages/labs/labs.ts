@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-labs',
@@ -18,6 +18,8 @@ export class Labs {
         avatar: 'https://example.com/avatar.png'
     };
 
+    userName = signal('Nicolás');
+
     onDoubleClick() {
         alert('¡Has hecho doble clic en el botón!');
     }
@@ -25,5 +27,11 @@ export class Labs {
     changeOn(event: Event) {
         const inputElement = event.target as HTMLInputElement;
         console.log('Nuevo valor:', inputElement.value);
+        this.userName.set(inputElement.value);
+    }
+
+    keyDownOn(event: KeyboardEvent) {
+        const inputElement = event.target as HTMLInputElement;
+        console.log('Tecla presionada:', event.key, 'Valor actual:', inputElement.value);
     }
 }

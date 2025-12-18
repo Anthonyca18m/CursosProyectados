@@ -7,4 +7,7 @@
 
 <button (dblclick)="onDoubleClick()">doble clic</button>
 
-<input type="text" name="" id="" (change)="changeOn($event)">
+<input type="text" name="" id="" [value]="userName()" (change)="changeOn($event)">
+{{ userName() }}
+<br>
+<input type="text" name="" id="" (keydown)="keyDownOn($event)">
