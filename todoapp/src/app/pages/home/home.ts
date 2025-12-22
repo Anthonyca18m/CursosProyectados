@@ -19,18 +19,18 @@ export class Home {
         nonNullable: true,
         validators: [
             Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(50),
         ]
     });
 
     addTask(event: Event) {
-        // const inputElement = event.target as HTMLInputElement;
-        // const newTitleTask = inputElement.value.trim();
         if (!this.newTaskCtrl.valid) return;
         if (this.tasks().some(task => task.title === this.newTaskCtrl.value?.trim())) return;
 
         const newTask: Task = {
             id: Date.now(),
-            title: this.newTaskCtrl.value?.trim() || '',
+            title: this.newTaskCtrl.value!.trim(),
             completed: false
         };
 
