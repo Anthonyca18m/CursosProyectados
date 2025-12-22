@@ -1,10 +1,13 @@
 import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-labs',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './labs.html',
-  styleUrl: './labs.css',
+  styleUrls: ['./labs.css'],
 })
 export class Labs {
     protected readonly name = 'Angular';
@@ -19,6 +22,15 @@ export class Labs {
     };
 
     userName = signal('Nicolás');
+
+
+    colorValue = new FormControl();
+
+    constructor() {
+        this.colorValue.valueChanges.subscribe(value => {
+            console.log('Color cambiado a:', value);
+        });
+    }
 
     onDoubleClick() {
         alert('¡Has hecho doble clic en el botón!');
