@@ -1,36 +1,43 @@
 import { Component, signal } from '@angular/core';
 
 import { Task } from '../../models/task.model';
+import { CommonModule } from '@angular/common';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css'],
 })
 export class Home {
 
     tasks = signal<Task[]>([]);
 
+    newTaskCtrl = new FormControl('', {
+        nonNullable: true,
+        validators: [
+            Validators.required,
+        ]
+    });
+
     addTask(event: Event) {
-        const inputElement = event.target as HTMLInputElement;
-        const newTitleTask = inputElement.value.trim();
+        // const inputElement = event.target as HTMLInputElement;
+        // const newTitleTask = inputElement.value.trim();
+        if (!this.newTaskCtrl.valid) return;
+        if (this.tasks().some(task => task.title === this.newTaskCtrl.value?.trim())) return;
 
-        if (this.tasks().some(task => task.title === newTitleTask)) return;
+        const newTask: Task = {
+            id: Date.now(),
+            title: this.newTaskCtrl.value?.trim() || '',
+            completed: false
+        };
 
-        if (newTitleTask) {
-
-            const newTask: Task = {
-                id: Date.now(),
-                title: newTitleTask,
-                completed: false
-            };
-
-            this.tasks.update(currentTasks => [
-                ...currentTasks, newTask
-            ]);
-            inputElement.value = '';
-        }
+        this.tasks.update(currentTasks => [
+            ...currentTasks, newTask
+        ]);
+        this.newTaskCtrl.reset();
     }
 
     removeTask(index: number) {
