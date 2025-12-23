@@ -6,6 +6,11 @@
             <input class="new-todo" placeholder="Type new todo" autofocus type="text"
                 [formControl]="newTaskCtrl"
                 (keydown.enter)="addTask($event)" />
+            <small *ngIf="newTaskCtrl.invalid && (newTaskCtrl.dirty || newTaskCtrl.touched)">
+                <span *ngIf="newTaskCtrl.errors?.['required']">Task is required.</span>
+                <span *ngIf="newTaskCtrl.errors?.['minlength']">Task must be at least 2 characters long.</span>
+                <span *ngIf="newTaskCtrl.errors?.['maxlength']">Task cannot be more than 50 characters long.</span>
+            </small>
         </div>
     </header>
     <div class="container todoapp-wrapper">
