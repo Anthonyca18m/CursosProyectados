@@ -18,23 +18,15 @@
         <section class="main">
             <ul class="todo-list">
                 @for (item of tasks(); track $index) {
-                    <li [class.completed]="item.completed">
+                    <li [class.completed]="item.completed" [class.editing]="item.editing">
                         <div class="view">
                             <input class="toggle" type="checkbox" [checked]="item.completed" (change)="toggleTaskCompletion($index)" />
-                            <label>{{ item.title }}</label>
+                            <label (dblclick)="editingActive($index)">{{ item.title }}</label>
                             <button class="destroy" (click)="removeTask($index)"></button>
                         </div>
-                        <input class="edit" value="{{ item.title }}" />
+                        <input class="edit" value="{{ item.title }}" (keydown.enter)="saveTask($index, $event)" />
                     </li>
                 }
-                <li class="editing">
-                    <div class="view">
-                        <input class="toggle" type="checkbox" />
-                        <label>Make dishes</label>
-                        <button class="destroy"></button>
-                    </div>
-                    <input class="edit" value="Make dishes" />
-                </li>
             </ul>
         </section>
         <!-- This footer should be hidden by default and shown when there are todos -->

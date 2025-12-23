@@ -13,7 +13,11 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class Home {
 
-    tasks = signal<Task[]>([]);
+    tasks = signal<Task[]>([
+        { id: 1, title: 'Buy groceries', completed: false, editing: false },
+        { id: 2, title: 'Walk the dog', completed: true, editing: false },
+        { id: 3, title: 'Read a book', completed: false, editing: false }
+    ]);
 
     newTaskCtrl = new FormControl('', {
         nonNullable: true,
@@ -31,13 +35,31 @@ export class Home {
         const newTask: Task = {
             id: Date.now(),
             title: this.newTaskCtrl.value!.trim(),
-            completed: false
+            completed: false,
+            editing: false
         };
 
         this.tasks.update(currentTasks => [
             ...currentTasks, newTask
         ]);
         this.newTaskCtrl.reset();
+    }
+
+    editingActive(index: number) {
+        this.tasks.update(currentTasks =>
+            currentTasks.map((task, i) => i === index ? { ...task, editing: true } : { ...task, editing: false })
+        );
+    }
+
+    saveTask(index: number, event: Event) {
+        const inputElement = event.target as HTMLInputElement;
+        const updatedTitle = inputElement.value.trim();
+        if (updatedTitle.length === 0) return;
+        this.tasks.update(currentTasks =>
+            currentTasks.map((task, i) =>
+                i === index ? { ...task, title: updatedTitle, editing: false } : task
+            )
+        );
     }
 
     removeTask(index: number) {
