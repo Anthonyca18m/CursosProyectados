@@ -19,4 +19,9 @@ export class List {
     { id: 5, name: 'Producto 5', img: 'https://picsum.photos/200/300?random=5', description: 'Descripción del Producto 5', price: 50.00 },
     { id: 6, name: 'Producto 6', img: 'https://picsum.photos/200/300?random=6', description: 'Descripción del Producto 6', price: 60.00 },
   ];
+
+  onAddToCart(message: string): void {
+    console.log(message);
+    console.log('Producto agregado al carrito desde el padre');
+  }
 }
