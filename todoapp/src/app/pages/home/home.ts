@@ -1,8 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, effect, inject, Injector, signal } from '@angular/core';
 
 import { Task } from '../../models/task.model';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+
+type Filter = 'all' | 'pending' | 'completed';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +15,31 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class Home {
 
-    tasks = signal<Task[]>([
-        { id: 1, title: 'Buy groceries', completed: false, editing: false },
-        { id: 2, title: 'Walk the dog', completed: true, editing: false },
-        { id: 3, title: 'Read a book', completed: false, editing: false }
-    ]);
+    filter = signal<Filter>('all');
+
+    filteredTasks = computed(() => {
+        const filter = this.filter();
+        const tasks = this.tasks();
+        if (filter === 'all') {
+            return tasks;
+        } else if (filter === 'pending') {
+            return tasks.filter(task => !task.completed);
+        } else {
+            return tasks.filter(task => task.completed);
+        }
+    });
+
+    setFilter(filter: Filter) {
+        this.filter.set(filter);
+    }
+
+    clearCompleted() {
+        this.tasks.update(currentTasks =>
+            currentTasks.filter(task => !task.completed)
+        );
+    }
+
+    tasks = signal<Task[]>([]);
 
     newTaskCtrl = new FormControl('', {
         nonNullable: true,
@@ -42,7 +64,27 @@ export class Home {
         this.tasks.update(currentTasks => [
             ...currentTasks, newTask
         ]);
+
+
+
         this.newTaskCtrl.reset();
+    }
+
+    ngOnInit() {
+        const storedTasks = localStorage.getItem('tasks');
+        if (storedTasks) {
+            this.tasks.set(JSON.parse(storedTasks));
+        }
+
+        this.trackTasks();
+    }
+
+    injector = inject(Injector);
+
+    trackTasks() {
+        effect(() => {
+            localStorage.setItem('tasks', JSON.stringify(this.tasks()));
+        }, { injector: this.injector});
     }
 
     editingActive(index: number) {
