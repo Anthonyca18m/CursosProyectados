@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -9,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './product.css',
 })
 export class Product {
-  img: string = `https://picsum.photos/200/300?random=${Math.random()}`;
+  
+  @Input({required: true}) img: string = `https://picsum.photos/200/300?random=${Math.random()}`;
+  @Input({required: true}) name: string = 'Nombre del Producto';
+  @Input({required: true}) description: string = 'Descripción del Producto';
+  @Input({required: true}) price: number = 0.00;
 }
