@@ -1,11 +1,11 @@
 <p>list workis!</p>
 
 <div class="grid grid-cols-6 gap-1">
-  <app-product
-    *ngFor="let product of products"
-    [img]="product.img"
-    [name]="product.name"
-    [description]="product.description"
-    [price]="product.price"
-  />
+  @for (item of products; track $index) {
+    <app-product
+      [img]="item.img"
+      [name]="item.name"
+      [description]="item.description"
+      [price]="item.price" />
+  }
 </div>
