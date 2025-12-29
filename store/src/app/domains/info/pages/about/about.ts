@@ -12,7 +12,7 @@ import { Counter as CounterComponent } from '../../../shared/components/counter/
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About {
+export default class About {
 
   duration = signal<number>(120);
   message = signal<string>('This is the about page counter');

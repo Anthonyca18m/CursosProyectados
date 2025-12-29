@@ -13,7 +13,7 @@ import { CartService } from '@services/cart-service';
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css',
 })
-export class ProductDetail {
+export default class ProductDetail {
 
   @Input() id?: string;
 

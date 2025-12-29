@@ -18,7 +18,7 @@ import { ca } from 'date-fns/locale';
   styleUrl: './list.css',
 
 })
-export class List {
+export default class List {
   products = signal<ProductModel[]>([]);
   categories = signal<CategoryModel[]>([]);
 
