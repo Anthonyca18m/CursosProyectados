@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ProductModel } from '../../../shared/models/product.model';
 
 @Component({
   selector: 'app-product',
@@ -10,10 +11,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class Product {
 
-  @Input({required: true}) img: string = `https://picsum.photos/200/300?random=${Math.random()}`;
-  @Input({required: true}) name: string = 'Nombre del Producto';
-  @Input({required: true}) description: string = 'Descripción del Producto';
-  @Input({required: true}) price: number = 0.00;
+  @Input({required: true}) item!: ProductModel;
 
   @Output() addToCart = new EventEmitter<string>();
 

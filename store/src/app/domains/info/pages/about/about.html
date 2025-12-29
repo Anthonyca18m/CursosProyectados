@@ -1,0 +1,10 @@
+<p>about works!</p>
+
+<input class="text-2xl" type="number" [value]="duration()" (keydown.enter)="onChangeDuration($event)" />
+
+<input class="text-2xl" type="text" [value]="message()" (keydown.enter)="onChangeMessage($event)" />
+
+@if (duration() > 500) {
+  <app-counter [count]="duration()" [message]="message()"></app-counter>
+}
+

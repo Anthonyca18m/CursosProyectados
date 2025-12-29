@@ -1,7 +1,9 @@
 <div>
-  <img [src]="img" alt="">
-  <h2>{{ name }}</h2>
-  <p>{{ description }}</p>
-  <span>Precio: ${{ price }}</span>
-  <button (click)="addToCartHandler(name)" class="btn btn-primary border-b-blue-700">Add to Cart</button>
+  <img [src]="item.img" alt="">
+  <h2>{{ item.name }}</h2>
+  <p>{{ item.description }}</p>
+  <span>Precio: ${{ item.price }}</span>
+  <div>
+    <button (click)="addToCartHandler(item.name)" class="btn btn-primary border-b-blue-700">Add to Cart</button>
+  </div>
 </div>
