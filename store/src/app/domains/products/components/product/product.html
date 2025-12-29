@@ -1,0 +1,21 @@
+<div class="group rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+  <a routerLink="/products/{{item.id}}" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+    <img [src]="item.images[0]" [alt]="item.title"
+      class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+  </a>
+  <div class="flex flex-col space-y-2 p-4">
+    <h3 class="text-sm text-gray-700 min-h-[40px] max-h-[40px] overflow-hidden">{{ item.title | uppercase }}</h3>
+
+    <p class="text-lg font-medium text-gray-900">{{ item.price | currency:'USD':'symbol' }}</p>
+
+    <small>{{ item.creationAt | dateInNow }}</small>
+
+    @if (!isCartProduct()) {
+      <button class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full cursor-pointer hover:bg-gray-300"
+      (click)="addToCartHandler(item)">Add to cart</button>
+    } @else {
+      <button class="text-black bg-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 w-full cursor-not-allowed" disabled>In Cart</button>
+    }
+
+  </div>
+</div>

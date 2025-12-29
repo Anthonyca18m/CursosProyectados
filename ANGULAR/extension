@@ -1,0 +1,49 @@
+#Estas son las extenciones de que estoy usando en VSC, ninguna es obligatoria
+
+ * Angular 6 Snippets - TypeScript, Html, Angular Material, ngRx, RxJS & Flex Layout
+ * Angular Language Service
+ * angular2-inline
+ * Boostrap 4, Font awesome 4, Font Awesome 5 Free & Pro snippets
+ * HTML CSS support
+ * Ionic 3 snippets
+ * JavaScript (ES6) code snippets
+ * jshint
+ * JSON to TS
+ * Material Icon Theme
+ * mysql-inline-decorator
+ * Prettier - Code formatter
+ * PWA Tools
+ * Terminal
+ * TSLint
+ * TypeScript Importer
+
+%AppData%\npm --                                            esto es para las variables de entorno
+ng new proyectonuevo                                        crear nuevo proyecto
+npm install --save @angular/material @angular/cdk           descargar recursos
+npm install --save @angular/animations                      descargar recursos
+ng serve                                                    correr el proyecto
+
+ng g s services/infoPage                                    crear un servicio para la pagina de datos
+ng g c pages/componenteprobando                             crear un componente para la pagina
+
+las interfaces lo creamos en esta ocasion manualmente src/app/interfaces
+
+
+/*************************************************************************/
+
+para crear un pase a produccion es
+
+    ng build --prod
+
+esto nos optimiza el proyecto de desarrollo a modo de produccion y nos crea una carpeta llamada dist que subiremos al host
+
+
+ahora usar un servidor local para probar recomendaciones el npm i http-server o xampp.. como gustes
+
+
+al subir al githubpages debes cambiar el nombre de la carpeta del proyecto a docs obligatorio
+
+
+
+
+

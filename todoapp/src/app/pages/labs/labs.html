@@ -1,0 +1,19 @@
+<input [value]="name">
+<button [disabled]="disable">Click me</button>
+<img [src]="imageUrl">
+
+<p>Hola, mi nombre es {{ persona.nombre }}, tengo {{ persona.edad }} años.</p>
+<img [src]="persona.avatar" alt="Avatar de {{ persona.nombre }}">
+
+<button (dblclick)="onDoubleClick()">doble clic</button>
+
+<input type="text" name="" id="" [value]="userName()" (change)="changeOn($event)">
+{{ userName() }}
+<br>
+<input type="text" name="" id="" (keydown)="keyDownOn($event)">
+
+<br>
+<br>
+<hr>
+<input type="color" name="" id="" [formControl]="colorValue">
+{{ colorValue.value }}
