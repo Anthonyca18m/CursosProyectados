@@ -1,5 +1,6 @@
+import { CartService } from './../../../shared/components/cart/cart.service';
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { ProductModel } from '../../../shared/models/product.model';
 
 @Component({
@@ -15,7 +16,14 @@ export class Product {
 
   @Output() addToCart = new EventEmitter<ProductModel>();
 
+  isCartProduct = signal<boolean>(false);
+
+  // Inyectar el servicio del carrito
+  private cartService = inject(CartService);
+
   addToCartHandler(product: ProductModel): void {
     this.addToCart.emit(product);
+
+    this.isCartProduct.set(this.cartService.verifyInCart(product.id));
   }
 }

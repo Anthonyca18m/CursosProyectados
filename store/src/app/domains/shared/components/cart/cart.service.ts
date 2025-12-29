@@ -38,4 +38,12 @@ export class CartService {
   getCartCount(): number {
     return this.cart().length;
   }
+
+  getCartTotal(): number {
+    return this.cart().reduce((total, product) => total + product.price, 0);
+  }
+
+  getCartTotalFormat(): string {
+    return `$ ${this.getCartTotal().toFixed(2)}`;
+  }
 }

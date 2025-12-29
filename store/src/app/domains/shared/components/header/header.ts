@@ -23,8 +23,6 @@ export class Header {
   // Ahora puedes acceder al cart así:
   cart = this.cartService.getCart();
 
-
-
   openCart(): void {
     // Logic to open the cart goes here
     this.isCartOpen.set(true);

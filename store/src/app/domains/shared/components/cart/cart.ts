@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { ProductModel } from '../../models/product.model';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +16,12 @@ export class Cart {
   @Output() closed = new EventEmitter<void>();
 
   @Input() cart: ProductModel[] = [];
+
+  private cartService = inject(CartService);
+
+  get cartTotalFormat(): string {
+    return this.cartService.getCartTotalFormat();
+  }
 
   closeCart(): void {
     this.isOpen = false;
