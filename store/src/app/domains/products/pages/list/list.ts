@@ -17,11 +17,17 @@ export class List {
 
   constructor() {
 
-    const initProducts: ProductModel[] = [
-      { id: 1, name: 'Producto 1', img: 'https://picsum.photos/200/300?random=1', description: 'Descripción del Producto 1', price: 10.00 },
-      { id: 2, name: 'Producto 2', img: 'https://picsum.photos/200/300?random=2', description: 'Descripción del Producto 2', price: 20.00 },
-      { id: 3, name: 'Producto 3', img: 'https://picsum.photos/200/300?random=3', description: 'Descripción del Producto 3', price: 30.00 },
-    ];
+    const initProducts: ProductModel[] = [];
+
+    for (let index = 0; index < 12; index++) {
+      initProducts.push({
+        id: index + 6,
+        name: `Producto ${index + 6}`,
+        img: `https://picsum.photos/200/300?random=${index + 6}`,
+        description: `Descripción del Producto ${index + 6}`,
+        price: (index + 6) * 10.00
+      });
+    }
 
     this.products.set(initProducts);
   }

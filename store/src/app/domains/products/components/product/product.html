@@ -1,9 +1,12 @@
-<div>
-  <img [src]="item.img" alt="">
-  <h2>{{ item.name }}</h2>
-  <p>{{ item.description }}</p>
-  <span>Precio: ${{ item.price }}</span>
-  <div>
-    <button (click)="addToCartHandler(item.name)" class="btn btn-primary border-b-blue-700">Add to Cart</button>
+<div class="group rounded-lg">
+  <a href="#" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+    <img [src]="item.img" [alt]="item.name"
+      class="h-full w-full object-cover object-center group-hover:opacity-75 rounded">
+  </a>
+  <div class="flex flex-col space-y-2 p-4">
+    <h3 class="text-sm text-gray-700">{{ item.name }}</h3>
+    <p class="text-lg font-medium text-gray-900">{{item.price}}</p>
+    <button class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full"
+      (click)="addToCartHandler(item.name)">Add to cart</button>
   </div>
 </div>

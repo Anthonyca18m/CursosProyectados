@@ -4,8 +4,8 @@ import { ProductModel } from '../../../shared/models/product.model';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule],
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
