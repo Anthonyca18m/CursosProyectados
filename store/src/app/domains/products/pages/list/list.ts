@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductModel } from '../../../shared/models/product.model';
 import { CartService } from '../../../shared/components/cart/cart.service';
+import { ProductService } from '../../../shared/services/product-service';
 
 @Component({
   selector: 'app-list',
@@ -17,27 +18,24 @@ export class List {
   products = signal<ProductModel[]>([]);
 
   // Inyectar el servicio del carrito
-  cartService = inject(CartService);
+  private cartService = inject(CartService);
+  private productService = inject(ProductService);
+
+  ngOnInit(): void {
+    // Simular la carga de productos
+    this.productService.getProducts().subscribe({
+      next: (data) => {
+        this.products.set(data);
+        console.log('Productos cargados:', data);
+      },
+      error: (err) => {
+        console.error('Error loading products:', err);
+      }
+    })
+  }
 
   // Ahora el cart se maneja en el servicio
   cart = this.cartService.getCart();
-
-  constructor() {
-
-    const initProducts: ProductModel[] = [];
-
-    for (let index = 0; index < 12; index++) {
-      initProducts.push({
-        id: index + 6,
-        name: `Producto ${index + 6}`,
-        img: `https://picsum.photos/200/300?random=${index + 6}`,
-        description: `Descripción del Producto ${index + 6}`,
-        price: (index + 6) * 10.00
-      });
-    }
-
-    this.products.set(initProducts);
-  }
 
   onAddToCart(p: ProductModel): void {
     // Usar el servicio para agregar productos

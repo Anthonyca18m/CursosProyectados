@@ -5,7 +5,7 @@
   [class.translate-x-0]="isOpen"
 >
   <div class="flex justify-between items-center">
-    <p class="text-xl">My Cart</p>
+    <p class="text-xl">My Cart ({{ cart.length }})</p>
     <button (click)="closeCart()" class="p-2 hover:bg-gray-200 rounded">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -31,10 +31,10 @@
       <ul>
         @for (item of cart; track item) {
           <li class="card ps-2 py-2 flex flex-row items-center space-x-4 mb-4 border pb-2 border-gray-300">
-            <img [src]="item.img" class="h-12 w-12 object-cover rounded" />
+            <img [src]="item.image" class="h-12 w-12 object-cover rounded" />
             <div>
-              <p class="font-semibold">{{ item.name }}</p>
-              <p class="text-sm text-gray-600">{{ item.price }}</p>
+              <p class="min-h-[30px] max-h-[30px] overflow-hidden text-xs">{{ item.title }}</p>
+              <p class="text-sm text-gray-600 mt-2">{{ item.price }}</p>
             </div>
           </li>
         }
