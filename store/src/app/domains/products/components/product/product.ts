@@ -22,6 +22,10 @@ export class Product {
   // Inyectar el servicio del carrito
   private cartService = inject(CartService);
 
+  ngOnInit(): void {
+    this.isCartProduct.set(this.cartService.verifyInCart(this.item.id));
+  }
+
   addToCartHandler(product: ProductModel): void {
     this.addToCart.emit(product);
 
