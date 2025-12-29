@@ -39,14 +39,14 @@
       </ul>
     </div>
     <div class="flex items-center">
-      <button class="px-4">
+      <button class="px-4" (click)="openCart()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-6 h-6"
+          class="w-6 h-6 cursor-pointer"
         >
           <path
             stroke-linecap="round"
@@ -58,3 +58,5 @@
     </div>
   </div>
 </nav>
+
+<app-cart [isOpen]="isCartOpen()" (closed)="closeCart()"></app-cart>
