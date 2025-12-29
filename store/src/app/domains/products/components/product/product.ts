@@ -13,9 +13,9 @@ export class Product {
 
   @Input({required: true}) item!: ProductModel;
 
-  @Output() addToCart = new EventEmitter<string>();
+  @Output() addToCart = new EventEmitter<ProductModel>();
 
-  addToCartHandler(name: string): void {
-    this.addToCart.emit(`clic en el producto: ${name} desde el hijo`);
+  addToCartHandler(product: ProductModel): void {
+    this.addToCart.emit(product);
   }
 }

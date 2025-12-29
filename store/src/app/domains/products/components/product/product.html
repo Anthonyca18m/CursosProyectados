@@ -6,7 +6,7 @@
   <div class="flex flex-col space-y-2 p-4">
     <h3 class="text-sm text-gray-700">{{ item.name }}</h3>
     <p class="text-lg font-medium text-gray-900">{{item.price}}</p>
-    <button class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full"
-      (click)="addToCartHandler(item.name)">Add to cart</button>
+    <button class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full cursor-pointer hover:bg-gray-300"
+      (click)="addToCartHandler(item)">Add to cart</button>
   </div>
 </div>

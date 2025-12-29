@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Product } from '../../components/product/product';
 import { CommonModule } from '@angular/common';
 
 import { ProductModel } from '../../../shared/models/product.model';
+import { CartService } from '../../../shared/components/cart/cart.service';
 
 @Component({
   selector: 'app-list',
@@ -14,6 +15,12 @@ import { ProductModel } from '../../../shared/models/product.model';
 })
 export class List {
   products = signal<ProductModel[]>([]);
+
+  // Inyectar el servicio del carrito
+  cartService = inject(CartService);
+
+  // Ahora el cart se maneja en el servicio
+  cart = this.cartService.getCart();
 
   constructor() {
 
@@ -32,8 +39,9 @@ export class List {
     this.products.set(initProducts);
   }
 
-  onAddToCart(message: string): void {
-    console.log(message);
+  onAddToCart(p: ProductModel): void {
+    // Usar el servicio para agregar productos
+    this.cartService.addToCart(p);
     console.log('Producto agregado al carrito desde el padre');
   }
 }

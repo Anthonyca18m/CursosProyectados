@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Cart } from '../cart/cart';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,13 @@ export class Header {
 
   isCartOpen = signal<boolean>(false);
 
-  
+  // Inyectar el servicio del carrito
+  cartService = inject(CartService);
+
+  // Ahora puedes acceder al cart así:
+  cart = this.cartService.getCart();
+
+
 
   openCart(): void {
     // Logic to open the cart goes here
