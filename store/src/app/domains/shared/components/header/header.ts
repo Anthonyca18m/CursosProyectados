@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { Cart } from '../cart/cart';
-import { CartService } from '../cart/cart.service';
+import { CartService } from '@services/cart-service';
 
 @Component({
   selector: 'app-header',

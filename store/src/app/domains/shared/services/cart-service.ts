@@ -44,6 +44,9 @@ export class CartService {
   }
 
   getCartTotalFormat(): string {
-    return `$ ${this.getCartTotal().toFixed(2)}`;
+    /**
+     * dar formato con pipe currency
+     */
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(this.getCartTotal());
   }
 }
