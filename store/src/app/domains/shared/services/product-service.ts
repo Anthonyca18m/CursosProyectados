@@ -10,10 +10,10 @@ export class ProductService {
   private http = inject(HttpClient);
 
   getProducts() {
-    return this.http.get<ProductModel[]>('https://fakestoreapi.com/products');
+    return this.http.get<ProductModel[]>('https://api.escuelajs.co/api/v1/products');
   }
 
   getProductById(id: number) {
-    return this.http.get<ProductModel>(`https://fakestoreapi.com/products/${id}`);
+    return this.http.get<ProductModel>(`https://api.escuelajs.co/api/v1/products/${id}`);
   }
 }

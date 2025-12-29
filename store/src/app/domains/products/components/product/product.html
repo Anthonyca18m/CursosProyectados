@@ -1,6 +1,6 @@
 <div class="group rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
   <a routerLink="/products/{{item.id}}" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
-    <img [src]="item.image" [alt]="item.title"
+    <img [src]="item.images[0]" [alt]="item.title"
       class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
   </a>
   <div class="flex flex-col space-y-2 p-4">

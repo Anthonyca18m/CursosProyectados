@@ -18,6 +18,8 @@ export class ProductDetail {
 
   productDetail = signal<ProductModel | null>(null);
 
+  coverImg = signal<string>('');
+
   private productService = inject(ProductService);
 
   ngOnInit(): void {
@@ -26,6 +28,9 @@ export class ProductDetail {
       this.productService.getProductById(parseInt(this.id)).subscribe({
         next: (data: any) => {
           this.productDetail.set(data);
+          if (data.images && data.images.length > 0) {
+            this.setConverImg(data.images[0]);
+          }
           console.log('Product details loaded:', data);
         },
         error: (err:any) => {
@@ -35,5 +40,9 @@ export class ProductDetail {
     } else {
       console.error('No product ID provided');
     }
+  }
+
+  setConverImg(imgUrl: string): void {
+    this.coverImg.set(imgUrl);
   }
 }
