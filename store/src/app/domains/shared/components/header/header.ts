@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { Cart } from '../cart/cart';
 import { CartService } from '@services/cart-service';
-import { RouterLink } from "@angular/router";
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,8 @@ import { RouterLink } from "@angular/router";
   imports: [
     CommonModule,
     Cart,
-    RouterLink
+    RouterLink,
+    RouterLinkActive
 ],
   templateUrl: './header.html',
   styleUrl: './header.css',
