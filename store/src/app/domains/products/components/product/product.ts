@@ -1,7 +1,7 @@
-import { CartService } from './../../../shared/components/cart/cart.service';
+import { CartService } from '@services/cart-service';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
-import { ProductModel } from '../../../shared/models/product.model';
+import { ProductModel } from '@models/product.model';
 
 @Component({
   selector: 'app-product',

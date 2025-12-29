@@ -1,11 +1,11 @@
 import { Injectable, signal } from '@angular/core';
-import { ProductModel } from '../../models/product.model';
+import { ProductModel } from '@models/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-  private cart = signal<ProductModel[]>([]);
+    private cart = signal<ProductModel[]>([]);
 
   // Getter para leer el cart
   getCart() {
