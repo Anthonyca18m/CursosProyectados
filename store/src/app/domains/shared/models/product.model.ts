@@ -8,4 +8,5 @@ export interface ProductModel {
   description: string;
   price: number;
   category?: CategoryModel;
+  creationAt: Date;
 }
