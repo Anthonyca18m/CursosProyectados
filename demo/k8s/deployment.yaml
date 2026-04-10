@@ -15,6 +15,9 @@ spec:
       labels:
         app: demo-app
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       # Ejemplo para producción (registry privado):
       # 1) Crear el secret docker-registry en el namespace:
       # kubectl create secret docker-registry regcred \
@@ -31,6 +34,13 @@ spec:
         - name: demo-app
           image: k3d-primerregistry.localhost:5000/demo-jar-builder:latest
           imagePullPolicy: Always
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
           envFrom:
             - configMapRef:
                 name: demo-app-config
@@ -38,6 +48,16 @@ spec:
                 name: demo-app-secret
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
           readinessProbe:
             httpGet:
               path: /
@@ -50,3 +70,6 @@ spec:
               port: 8080
             initialDelaySeconds: 30
             periodSeconds: 20
+      volumes:
+        - name: tmp
+          emptyDir: {}

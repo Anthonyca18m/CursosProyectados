@@ -64,6 +64,40 @@ Si tienes `ingress-nginx` activo y puerto mapeado en el LB, usa:
 - Activar `imagePullSecrets` en `deployment.yaml` si usas registry privado.
 - Mantener probes y definir `resources` (`requests/limits`).
 
+## Hardening recomendado (estándar)
+
+Para un baseline de seguridad en Kubernetes, puedes usar este patrón en `Deployment`:
+
+```yaml
+spec:
+  template:
+    spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: demo-app
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
+```
+
+Notas:
+
+- `runAsNonRoot` evita ejecución como root.
+- `allowPrivilegeEscalation: false` bloquea escalación de privilegios.
+- `readOnlyRootFilesystem` protege el sistema de archivos raíz.
+- `emptyDir` en `/tmp` evita fallos de apps que necesitan escritura temporal.
+
 ## Troubleshooting rápido
 
 Si algo falla:

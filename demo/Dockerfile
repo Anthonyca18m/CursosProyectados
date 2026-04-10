@@ -21,7 +21,13 @@ RUN ./gradlew --no-daemon clean bootJar
 FROM eclipse-temurin:21-jre AS runtime
 WORKDIR /app
 
-COPY --from=builder /workspace/build/libs/*.jar app.jar
+RUN groupadd --system app \
+	&& useradd --system --gid app --home-dir /app --shell /usr/sbin/nologin app
+
+COPY --from=builder --chown=app:app /workspace/build/libs/*.jar app.jar
+RUN chmod 500 /app/app.jar
+
+USER app
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
