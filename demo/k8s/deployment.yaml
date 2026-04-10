@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+  namespace: ns-example
+  labels:
+    app: demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      # Ejemplo para producción (registry privado):
+      # 1) Crear el secret docker-registry en el namespace:
+      # kubectl create secret docker-registry regcred \
+      #   --docker-server=<registry-url> \
+      #   --docker-username=<usuario> \
+      #   --docker-password=<password|token> \
+      #   --docker-email=<email> \
+      #   -n ns-example
+      #
+      # 2) Descomentar este bloque para habilitarlo:
+      # imagePullSecrets:
+      #   - name: regcred
+      containers:
+        - name: demo-app
+          image: k3d-primerregistry.localhost:5000/demo-jar-builder:latest
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: demo-app-config
+            - secretRef:
+                name: demo-app-secret
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 20
