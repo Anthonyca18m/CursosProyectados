@@ -16,6 +16,9 @@ spec:
         app: demo-app
     spec:
       securityContext:
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
         seccompProfile:
           type: RuntimeDefault
       # Ejemplo para producción (registry privado):
@@ -36,6 +39,8 @@ spec:
           imagePullPolicy: Always
           securityContext:
             runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
             capabilities:
