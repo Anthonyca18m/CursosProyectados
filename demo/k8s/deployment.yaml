@@ -35,7 +35,7 @@ spec:
       #   - name: regcred
       containers:
         - name: demo-app
-          image: k3d-primerregistry.localhost:5000/demo-jar-builder:latest
+          image: demo/beta:latest
           imagePullPolicy: Always
           securityContext:
             runAsNonRoot: true

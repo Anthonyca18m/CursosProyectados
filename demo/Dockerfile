@@ -21,8 +21,8 @@ RUN ./gradlew --no-daemon clean bootJar
 FROM eclipse-temurin:21-jre AS runtime
 WORKDIR /app
 
-RUN groupadd --system app \
-	&& useradd --system --gid app --home-dir /app --shell /usr/sbin/nologin app
+RUN groupadd --system --gid 10001 app \
+	&& useradd --system --uid 10001 --gid 10001 --home-dir /app --shell /usr/sbin/nologin app
 
 COPY --from=builder --chown=app:app /workspace/build/libs/*.jar app.jar
 RUN chmod 500 /app/app.jar

@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  oracle:
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    container_name: oracle
+    restart: unless-stopped
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PWD: miclave
+      ORACLE_CHARACTERSET: AL32UTF8
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "sqlplus", "-L", "system/miclave@//localhost:1521/XEPDB1", "@/dev/null"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  oracle_data:
+    driver: local

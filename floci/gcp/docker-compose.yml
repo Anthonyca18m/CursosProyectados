@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  gcp-emulator:
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk:emulators
+    container_name: gcp-emulator
+    restart: unless-stopped
+    ports:
+      - "8085:8085"   # Pub/Sub
+      - "8432:8432"   # Firestore (opcional)
+      - "4000:4000"   # UI de emuladores
+    environment:
+      - PUBSUB_PROJECT_ID=demo-project
+      - PUBSUB_EMULATOR_HOST=0.0.0.0:8085
+    command: >
+      sh -c "
+        gcloud beta emulators pubsub start --project=demo-project --host-port=0.0.0.0:8085 &
+        gcloud beta emulators firestore start --host-port=0.0.0.0:8432 --project=demo-project &
+        wait
+      "
+    volumes:
+      - gcp_emulator_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8085/v1/projects/demo-project/topics"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+# Conexion desde cliente:
+#   export PUBSUB_EMULATOR_HOST=localhost:8085
+#   gcloud config set project demo-project
+#   gcloud auth application-default login (en tu maquina host)
+
+volumes:
+  gcp_emulator_data:
+    driver: local

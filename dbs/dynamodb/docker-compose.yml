@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    container_name: dynamodb
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb", "-dbPath", "/home/dynamodblocal/data"]
+    volumes:
+      - dynamodb_data:/home/dynamodblocal/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# Nota: DynamoDB Local no requiere credenciales reales. Para clientes se usan:
+# AWS_ACCESS_KEY_ID=local, AWS_SECRET_ACCESS_KEY=miclave (no validadas por Local)
+volumes:
+  dynamodb_data:
+    driver: local

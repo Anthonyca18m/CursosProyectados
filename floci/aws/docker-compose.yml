@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  localstack:
+    image: localstack/localstack:4.0.3
+    container_name: localstack
+    restart: unless-stopped
+    ports:
+      - "4566:4566"          # Gateway principal
+      - "4510-4559:4510-4559" # Servicios individuales
+    environment:
+      - SERVICES=s3,dynamodb,sqs,sns,lambda,iam,sts,secretsmanager
+      - AWS_ACCESS_KEY_ID=local
+      - AWS_SECRET_ACCESS_KEY=miclave
+      - AWS_DEFAULT_REGION=us-east-1
+      - DATA_DIR=/var/lib/localstack
+    volumes:
+      - localstack_data:/var/lib/localstack
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  localstack_data:
+    driver: local
