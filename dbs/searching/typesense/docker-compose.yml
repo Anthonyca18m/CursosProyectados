@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  typesense:
+    image: typesense/typesense:27.1
+    container_name: typesense
+    restart: unless-stopped
+    ports:
+      - "8108:8108"
+    volumes:
+      - ./data:/data
+    command:
+      - "--data-dir=/data"
+      - "--api-key=miclave"
+      - "--enable-cors"
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8108"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
